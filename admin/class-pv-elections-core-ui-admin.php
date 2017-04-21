@@ -118,7 +118,7 @@ class Pv_Elections_Core_Ui_Admin {
          */
         
         add_manu_page(__('Phillyvotes', $this->plugin_name),'Phillyvotes','manage_options','phillyvotes', array($this, 'display_candidates_and_offices_page'));
-        add_submenu_page('phillyvotes', __('Candidates & Offices', $this->plugin_name), 'Candidates & Offices', 'manage_options', 'candidates-and-offices'array($this, 'display_candidates_and_offices_page'));
+        add_submenu_page('phillyvotes', __('Candidates & Offices', $this->plugin_name), 'Candidates & Offices', 'manage_options', 'candidates-and-offices', array($this, 'display_candidates_and_offices_page'));
         add_submenu_page('phillyvotes', __('Department', $this->plugin_name), 'Department', 'manage_options', 'department', array($this, 'display_department_page'));
         add_submenu_page('phillyvotes', __('Offices', $this->plugin_name), 'Offices', 'manage_options', 'officers', array($this, 'display_officers_page'));
         add_suubmenu_page('phillyvotes', __('Results', $this->plugin_name), 'Results', 'manage_options', 'results', array($this, 'display_results_page'));
