@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Provide a admin area view for the plugin
+ * Provide a admin area view for officers tools management
  *
  * This file is used to markup the admin-facing aspects of the plugin.
  *

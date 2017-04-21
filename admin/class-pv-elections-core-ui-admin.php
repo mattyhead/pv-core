@@ -117,13 +117,64 @@ class Pv_Elections_Core_Ui_Admin {
          *
          */
         
-        add_manu_page(__('Phillyvotes', $this->plugin_name),'Phillyvotes','manage_options','phillyvotes', array($this, 'display_candidates_and_offices_page'));
-        add_submenu_page('phillyvotes', __('Candidates & Offices', $this->plugin_name), 'Candidates & Offices', 'manage_options', 'candidates-and-offices', array($this, 'display_candidates_and_offices_page'));
-        add_submenu_page('phillyvotes', __('Department', $this->plugin_name), 'Department', 'manage_options', 'department', array($this, 'display_department_page'));
-        add_submenu_page('phillyvotes', __('Offices', $this->plugin_name), 'Offices', 'manage_options', 'officers', array($this, 'display_officers_page'));
-        add_suubmenu_page('phillyvotes', __('Results', $this->plugin_name), 'Results', 'manage_options', 'results', array($this, 'display_results_page'));
-        add_submenu_page('phillyvotes', __('Voters', $this->plugin_name), 'Voters', 'manage_options', 'voters', array($this, 'display_voters_page'));
+        add_manu_page(__('Phillyvotes', $this->plugin_name),'Phillyvotes','manage_options','phillyvotes', array($this, 'display_candidates_admin_page'));
+        add_submenu_page('phillyvotes', __('Candidates & Offices', $this->plugin_name), 'Candidates & Offices', 'manage_options', 'candidates-and-offices', array($this, 'display_candidates_admin_page'));
+        add_submenu_page('phillyvotes', __('Department', $this->plugin_name), 'Department', 'manage_options', 'department', array($this, 'display_department_admin_page'));
+        add_submenu_page('phillyvotes', __('Elections', $this->plugin_name), 'Elections', 'manage_options', 'results', array($this, 'display_elections_admin_page'));
+        add_submenu_page('phillyvotes', __('Offices', $this->plugin_name), 'Offices', 'manage_options', 'officers', array($this, 'display_officers_admin_page'));
+        add_submenu_page('phillyvotes', __('Voters', $this->plugin_name), 'Voters', 'manage_options', 'voters', array($this, 'display_voters_admin_page'));
     
+    }
+
+    /**
+     * Render the settings page for this plugin.
+     *
+     * @since    1.0.0
+     */
+    public function display_candidates_admin_page()
+    {
+        include_once('partials/pv-elections-core-ui-admin-display-candidates.php');
+    }
+
+    /**
+     * Render the settings page for this plugin.
+     *
+     * @since    1.0.0
+     */
+    public function display_department_admin_page()
+    {
+        include_once('partials/pv-elections-core-ui-admin-display-department.php');
+    }
+
+    /**
+     * Render the settings page for this plugin.
+     *
+     * @since    1.0.0
+     */
+    public function display_elections_admin_page()
+    {
+        include_once('partials/pv-elections-core-ui-admin-display-elections.php');
+    }
+
+    /**
+     * Render the settings page for this plugin.
+     *
+     * @since    1.0.0
+     */
+    public function display_officers_admin_page()
+    {
+        include_once('partials/pv-elections-core-ui-admin-display-officers.php');
+    }
+
+
+    /**
+     * Render the settings page for this plugin.
+     *
+     * @since    1.0.0
+     */
+    public function display_voters_admin_page()
+    {
+        include_once('partials/pv-elections-core-ui-admin-display-voters.php');
     }
 
 }
