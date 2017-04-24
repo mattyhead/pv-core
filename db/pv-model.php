@@ -5,8 +5,8 @@
  * @link       philadelphiavotes.com
  * @since      1.0.0
  *
- * @package    Pv_Elections-Core-Ui
- * @subpackage Pv_Elections-Core-Ui/Db
+ * @package    Pv_Elections_Core
+ * @subpackage Pv_Elections_Core/db
  * @author     matthew murphy <matthew.e.murphy@phila.gov>
  */
 abstract class Pv_Model {

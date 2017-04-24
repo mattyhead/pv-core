@@ -6,8 +6,8 @@
  * @link       philadelphiavotes.com
  * @since      1.0.0
  *
- * @package    Pv_Elections_Core_Ui
- * @subpackage Pv_Elections_Core_Ui/admin
+ * @package    Pv_Elections_Core
+ * @subpackage Pv_Elections_Core/admin
  */
 
 /**
@@ -16,11 +16,11 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package    Pv_Elections_Core_Ui
- * @subpackage Pv_Elections_Core_Ui/admin
+ * @package    Pv_Elections_Core
+ * @subpackage Pv_Elections_Core/admin
  * @author     matthew murphy <matthew.e.murphy@phila.gov>
  */
-class Pv_Elections_Core_Ui_Admin {
+class Pv_Elections_Core_Admin {
 
 	/**
 	 * The ID of this plugin.
@@ -65,15 +65,15 @@ class Pv_Elections_Core_Ui_Admin {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Pv_Elections_Core_Ui_Loader as all of the hooks are defined
+		 * defined in Pv_Elections_Core_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Pv_Elections_Core_Ui_Loader will then create the relationship
+		 * The Pv_Elections_Core_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/pv-elections-core-ui-admin.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/pv-elections-core-admin.css', array(), $this->version, 'all' );
 
 	}
 
@@ -88,15 +88,15 @@ class Pv_Elections_Core_Ui_Admin {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Pv_Elections_Core_Ui_Loader as all of the hooks are defined
+		 * defined in Pv_Elections_Core_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Pv_Elections_Core_Ui_Loader will then create the relationship
+		 * The Pv_Elections_Core_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/pv-elections-core-ui-admin.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/pv-elections-core-admin.js', array( 'jquery' ), $this->version, false );
 
 	}
 
@@ -133,7 +133,7 @@ class Pv_Elections_Core_Ui_Admin {
      */
     public function display_candidates_admin_page()
     {
-        include_once('partials/pv-elections-core-ui-admin-display-candidates.php');
+        include_once('partials/pv-elections-core-admin-display-candidates.php');
     }
 
     /**
@@ -143,7 +143,7 @@ class Pv_Elections_Core_Ui_Admin {
      */
     public function display_department_admin_page()
     {
-        include_once('partials/pv-elections-core-ui-admin-display-department.php');
+        include_once('partials/pv-elections-core-admin-display-department.php');
     }
 
     /**
@@ -153,7 +153,7 @@ class Pv_Elections_Core_Ui_Admin {
      */
     public function display_elections_admin_page()
     {
-        include_once('partials/pv-elections-core-ui-admin-display-elections.php');
+        include_once('partials/pv-elections-core-admin-display-elections.php');
     }
 
     /**
@@ -163,7 +163,7 @@ class Pv_Elections_Core_Ui_Admin {
      */
     public function display_officers_admin_page()
     {
-        include_once('partials/pv-elections-core-ui-admin-display-officers.php');
+        include_once('partials/pv-elections-core-admin-display-officers.php');
     }
 
 
@@ -174,7 +174,7 @@ class Pv_Elections_Core_Ui_Admin {
      */
     public function display_voters_admin_page()
     {
-        include_once('partials/pv-elections-core-ui-admin-display-voters.php');
+        include_once('partials/pv-elections-core-admin-display-voters.php');
     }
 
 }

@@ -22,7 +22,7 @@
  * @link       philadelphiavotes.com
  * @since      1.0.0
  *
- * @package    Pv_Elections_Core_Ui
+ * @package    Pv_Elections_Core
  */
 
 // If uninstall not called from WordPress, then exit.

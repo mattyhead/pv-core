@@ -6,8 +6,8 @@
  * @link       philadelphiavotes.com
  * @since      1.0.0
  *
- * @package    Pv_Elections_Core_Ui
- * @subpackage Pv_Elections_Core_Ui/public
+ * @package    Pv_Elections_Core
+ * @subpackage Pv_Elections_Core/public
  */
 
 /**
@@ -16,11 +16,11 @@
  * Defines the plugin name, version, and two examples hooks for how to
  * enqueue the admin-specific stylesheet and JavaScript.
  *
- * @package    Pv_Elections_Core_Ui
- * @subpackage Pv_Elections_Core_Ui/public
+ * @package    Pv_Elections_Core
+ * @subpackage Pv_Elections_Core/public
  * @author     matthew murphy <matthew.e.murphy@phila.gov>
  */
-class Pv_Elections_Core_Ui_Public {
+class Pv_Elections_Core_Public {
 
 	/**
 	 * The ID of this plugin.
@@ -65,15 +65,15 @@ class Pv_Elections_Core_Ui_Public {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Pv_Elections_Core_Ui_Loader as all of the hooks are defined
+		 * defined in Pv_Elections_Core_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Pv_Elections_Core_Ui_Loader will then create the relationship
+		 * The Pv_Elections_Core_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
 
-		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/pv-elections-core-ui-public.css', array(), $this->version, 'all' );
+		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/pv-elections-core-public.css', array(), $this->version, 'all' );
 
 	}
 
@@ -88,15 +88,15 @@ class Pv_Elections_Core_Ui_Public {
 		 * This function is provided for demonstration purposes only.
 		 *
 		 * An instance of this class should be passed to the run() function
-		 * defined in Pv_Elections_Core_Ui_Loader as all of the hooks are defined
+		 * defined in Pv_Elections_Core_Loader as all of the hooks are defined
 		 * in that particular class.
 		 *
-		 * The Pv_Elections_Core_Ui_Loader will then create the relationship
+		 * The Pv_Elections_Core_Loader will then create the relationship
 		 * between the defined hooks and the functions defined in this
 		 * class.
 		 */
 
-		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/pv-elections-core-ui-public.js', array( 'jquery' ), $this->version, false );
+		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/pv-elections-core-public.js', array( 'jquery' ), $this->version, false );
 
 	}
 

@@ -9,8 +9,8 @@
  * @link       philadelphiavotes.com
  * @since      1.0.0
  *
- * @package    Pv_Elections_Core_Ui
- * @subpackage Pv_Elections_Core_Ui/includes
+ * @package    Pv_Elections_Core
+ * @subpackage Pv_Elections_Core/includes
  */
 
 /**
@@ -23,11 +23,11 @@
  * version of the plugin.
  *
  * @since      1.0.0
- * @package    Pv_Elections_Core_Ui
- * @subpackage Pv_Elections_Core_Ui/includes
+ * @package    Pv_Elections_Core
+ * @subpackage Pv_Elections_Core/includes
  * @author     matthew murphy <matthew.e.murphy@phila.gov>
  */
-class Pv_Elections_Core_Ui {
+class Pv_Elections_Core {
 
 	/**
 	 * The loader that's responsible for maintaining and registering all hooks that power
@@ -35,7 +35,7 @@ class Pv_Elections_Core_Ui {
 	 *
 	 * @since    1.0.0
 	 * @access   protected
-	 * @var      Pv_Elections_Core_Ui_Loader    $loader    Maintains and registers all hooks for the plugin.
+	 * @var      Pv_Elections_Core_Loader    $loader    Maintains and registers all hooks for the plugin.
 	 */
 	protected $loader;
 
@@ -68,7 +68,7 @@ class Pv_Elections_Core_Ui {
 	 */
 	public function __construct() {
 
-		$this->plugin_name = 'pv-elections-core-ui';
+		$this->plugin_name = 'pv-elections-core';
 		$this->version = '1.0.0';
 
 		$this->load_dependencies();
@@ -83,10 +83,10 @@ class Pv_Elections_Core_Ui {
 	 *
 	 * Include the following files that make up the plugin:
 	 *
-	 * - Pv_Elections_Core_Ui_Loader. Orchestrates the hooks of the plugin.
-	 * - Pv_Elections_Core_Ui_i18n. Defines internationalization functionality.
-	 * - Pv_Elections_Core_Ui_Admin. Defines all hooks for the admin area.
-	 * - Pv_Elections_Core_Ui_Public. Defines all hooks for the public side of the site.
+	 * - Pv_Elections_Core_Loader. Orchestrates the hooks of the plugin.
+	 * - Pv_Elections_Core_i18n. Defines internationalization functionality.
+	 * - Pv_Elections_Core_Admin. Defines all hooks for the admin area.
+	 * - Pv_Elections_Core_Public. Defines all hooks for the public side of the site.
 	 *
 	 * Create an instance of the loader which will be used to register the hooks
 	 * with WordPress.
@@ -100,33 +100,33 @@ class Pv_Elections_Core_Ui {
 		 * The class responsible for orchestrating the actions and filters of the
 		 * core plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-pv-elections-core-ui-loader.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-pv-elections-core-loader.php';
 
 		/**
 		 * The class responsible for defining internationalization functionality
 		 * of the plugin.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-pv-elections-core-ui-i18n.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'includes/class-pv-elections-core-i18n.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the admin area.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-pv-elections-core-ui-admin.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'admin/class-pv-elections-core-admin.php';
 
 		/**
 		 * The class responsible for defining all actions that occur in the public-facing
 		 * side of the site.
 		 */
-		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-pv-elections-core-ui-public.php';
+		require_once plugin_dir_path( dirname( __FILE__ ) ) . 'public/class-pv-elections-core-public.php';
 
-		$this->loader = new Pv_Elections_Core_Ui_Loader();
+		$this->loader = new Pv_Elections_Core_Loader();
 
 	}
 
 	/**
 	 * Define the locale for this plugin for internationalization.
 	 *
-	 * Uses the Pv_Elections_Core_Ui_i18n class in order to set the domain and to register the hook
+	 * Uses the Pv_Elections_Core_i18n class in order to set the domain and to register the hook
 	 * with WordPress.
 	 *
 	 * @since    1.0.0
@@ -134,7 +134,7 @@ class Pv_Elections_Core_Ui {
 	 */
 	private function set_locale() {
 
-		$plugin_i18n = new Pv_Elections_Core_Ui_i18n();
+		$plugin_i18n = new Pv_Elections_Core_i18n();
 
 		$this->loader->add_action( 'plugins_loaded', $plugin_i18n, 'load_plugin_textdomain' );
 
@@ -149,7 +149,7 @@ class Pv_Elections_Core_Ui {
 	 */
 	private function define_admin_hooks() {
 
-		$plugin_admin = new Pv_Elections_Core_Ui_Admin( $this->get_plugin_name(), $this->get_version() );
+		$plugin_admin = new Pv_Elections_Core_Admin( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
@@ -167,7 +167,7 @@ class Pv_Elections_Core_Ui {
 	 */
 	private function define_public_hooks() {
 
-		$plugin_public = new Pv_Elections_Core_Ui_Public( $this->get_plugin_name(), $this->get_version() );
+		$plugin_public = new Pv_Elections_Core_Public( $this->get_plugin_name(), $this->get_version() );
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
@@ -198,7 +198,7 @@ class Pv_Elections_Core_Ui {
 	 * The reference to the class that orchestrates the hooks with the plugin.
 	 *
 	 * @since     1.0.0
-	 * @return    Pv_Elections_Core_Ui_Loader    Orchestrates the hooks of the plugin.
+	 * @return    Pv_Elections_Core_Loader    Orchestrates the hooks of the plugin.
 	 */
 	public function get_loader() {
 		return $this->loader;

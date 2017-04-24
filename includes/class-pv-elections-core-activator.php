@@ -6,8 +6,8 @@
  * @link       philadelphiavotes.com
  * @since      1.0.0
  *
- * @package    Pv_Elections_Core_Ui
- * @subpackage Pv_Elections_Core_Ui/includes
+ * @package    Pv_Elections_Core
+ * @subpackage Pv_Elections_Core/includes
  */
 
 /**
@@ -16,11 +16,11 @@
  * This class defines all code necessary to run during the plugin's activation.
  *
  * @since      1.0.0
- * @package    Pv_Elections_Core_Ui
- * @subpackage Pv_Elections_Core_Ui/includes
+ * @package    Pv_Elections_Core
+ * @subpackage Pv_Elections_Core/includes
  * @author     matthew murphy <matthew.e.murphy@phila.gov>
  */
-class Pv_Elections_Core_Ui_Activator {
+class Pv_Elections_Core_Activator {
 
 	/**
 	 * Short Description. (use period)

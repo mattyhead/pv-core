@@ -8,9 +8,9 @@ Stable tag: 1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-Create some shared admin UI elements
+Create some shared admin elements
 
 == Description ==
 
-Create some shared admin UI elements
+Create some shared admin elements
 

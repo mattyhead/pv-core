@@ -9,8 +9,8 @@
  * @link       philadelphiavotes.com
  * @since      1.0.0
  *
- * @package    Pv_Elections_Core_Ui
- * @subpackage Pv_Elections_Core_Ui/includes
+ * @package    Pv_Elections_Core
+ * @subpackage Pv_Elections_Core/includes
  */
 
 /**
@@ -20,11 +20,11 @@
  * so that it is ready for translation.
  *
  * @since      1.0.0
- * @package    Pv_Elections_Core_Ui
- * @subpackage Pv_Elections_Core_Ui/includes
+ * @package    Pv_Elections_Core
+ * @subpackage Pv_Elections_Core/includes
  * @author     matthew murphy <matthew.e.murphy@phila.gov>
  */
-class Pv_Elections_Core_Ui_i18n {
+class Pv_Elections_Core_i18n {
 
 
 	/**
@@ -35,7 +35,7 @@ class Pv_Elections_Core_Ui_i18n {
 	public function load_plugin_textdomain() {
 
 		load_plugin_textdomain(
-			'pv-elections-core-ui',
+			'pv-elections-core',
 			false,
 			dirname( dirname( plugin_basename( __FILE__ ) ) ) . '/languages/'
 		);

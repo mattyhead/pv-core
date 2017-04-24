@@ -10,18 +10,18 @@
  *
  * @link              philadelphiavotes.com
  * @since             1.0.0
- * @package           Pv_Elections_Core_Ui
+ * @package           Pv_Elections_Core
  *
  * @wordpress-plugin
  * Plugin Name:       elections core ui
- * Plugin URI:        pv-elections-core-ui
+ * Plugin URI:        pv-elections-core
  * Description:       This is a short description of what the plugin does. It's displayed in the WordPress admin area.
  * Version:           1.0.0
  * Author:            matthew murphy
  * Author URI:        philadelphiavotes.com
  * License:           GPL-2.0+
  * License URI:       http://www.gnu.org/licenses/gpl-2.0.txt
- * Text Domain:       pv-elections-core-ui
+ * Text Domain:       pv-elections-core
  * Domain Path:       /languages
  */
 
@@ -32,30 +32,30 @@ if ( ! defined( 'WPINC' ) ) {
 
 /**
  * The code that runs during plugin activation.
- * This action is documented in includes/class-pv-elections-core-ui-activator.php
+ * This action is documented in includes/class-pv-elections-core-activator.php
  */
-function activate_pv_elections_core_ui() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-pv-elections-core-ui-activator.php';
-	Pv_Elections_Core_Ui_Activator::activate();
+function activate_pv_elections_core() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-pv-elections-core-activator.php';
+	Pv_Elections_Core_Activator::activate();
 }
 
 /**
  * The code that runs during plugin deactivation.
- * This action is documented in includes/class-pv-elections-core-ui-deactivator.php
+ * This action is documented in includes/class-pv-elections-core-deactivator.php
  */
-function deactivate_pv_elections_core_ui() {
-	require_once plugin_dir_path( __FILE__ ) . 'includes/class-pv-elections-core-ui-deactivator.php';
-	Pv_Elections_Core_Ui_Deactivator::deactivate();
+function deactivate_pv_elections_core() {
+	require_once plugin_dir_path( __FILE__ ) . 'includes/class-pv-elections-core-deactivator.php';
+	Pv_Elections_Core_Deactivator::deactivate();
 }
 
-register_activation_hook( __FILE__, 'activate_pv_elections_core_ui' );
-register_deactivation_hook( __FILE__, 'deactivate_pv_elections_core_ui' );
+register_activation_hook( __FILE__, 'activate_pv_elections_core' );
+register_deactivation_hook( __FILE__, 'deactivate_pv_elections_core' );
 
 /**
  * The core plugin class that is used to define internationalization,
  * admin-specific hooks, and public-facing site hooks.
  */
-require plugin_dir_path( __FILE__ ) . 'includes/class-pv-elections-core-ui.php';
+require plugin_dir_path( __FILE__ ) . 'includes/class-pv-elections-core.php';
 
 /**
  * Begins execution of the plugin.
@@ -66,10 +66,10 @@ require plugin_dir_path( __FILE__ ) . 'includes/class-pv-elections-core-ui.php';
  *
  * @since    1.0.0
  */
-function run_pv_elections_core_ui() {
+function run_pv_elections_core() {
 
-	$plugin = new Pv_Elections_Core_Ui();
+	$plugin = new Pv_Elections_Core();
 	$plugin->run();
 
 }
-run_pv_elections_core_ui();
+run_pv_elections_core();

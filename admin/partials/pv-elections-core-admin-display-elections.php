@@ -1,15 +1,15 @@
 <?php
 
 /**
- * Provide a admin area view for candidates tools management
+ * Provide a admin area view for the elections tools management
  *
  * This file is used to markup the admin-facing aspects of the plugin.
  *
  * @link       philadelphiavotes.com
  * @since      1.0.0
  *
- * @package    Pv_Elections_Core_Ui
- * @subpackage Pv_Elections_Core_Ui/admin/partials
+ * @package    Pv_Elections_Core
+ * @subpackage Pv_Elections_Core/admin/partials
  */
 ?>
 

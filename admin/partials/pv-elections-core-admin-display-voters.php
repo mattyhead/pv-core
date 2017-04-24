@@ -8,8 +8,8 @@
  * @link       philadelphiavotes.com
  * @since      1.0.0
  *
- * @package    Pv_Elections_Core_Ui
- * @subpackage Pv_Elections_Core_Ui/admin/partials
+ * @package    Pv_Elections_Core
+ * @subpackage Pv_Elections_Core/admin/partials
  */
 ?>
 
