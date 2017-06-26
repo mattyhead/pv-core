@@ -15,7 +15,7 @@ class Pv_Core_Model {
      * The ID of this plugin.
      *
      * @since    1.0.0
-     * @access   private
+     * @access   public
      * @var      string    The PK of this plugin.
      */
     protected $primary_key = 'id';
@@ -24,7 +24,7 @@ class Pv_Core_Model {
      * fields stub.
      *
      * @since    1.0.0
-     * @access   private
+     * @access   public
      * @var      mixed
      */
     protected $fields = array('id', 'created', 'modified');
@@ -33,7 +33,7 @@ class Pv_Core_Model {
      * The tablename
      *
      * @since    1.0.0
-     * @access   private
+     * @access   public
      * @var      string    The name of the instanced table
      */
     protected $tablename;
@@ -42,16 +42,25 @@ class Pv_Core_Model {
      * The database object
      *
      * @since    1.0.0
-     * @access   private
+     * @access   public
      * @var      mixed     The WBDB object.
      */
     protected $db;
 
     /**
+     * The validation array
+     *
+     * @since    1.0.0
+     * @access   public
+     * @var      mixed     start / stop
+     */
+    protected $validation;
+
+    /**
      * The pagination array
      *
      * @since    1.0.0
-     * @access   private
+     * @access   public
      * @var      mixed     start / stop
      */
     protected $pagination;
@@ -62,8 +71,9 @@ class Pv_Core_Model {
         $this->db = &$wpdb;
 
         $this->pagination = ( object ) array( 
-            'start'=> ( isset( $_REQUEST['start'] ) ? ( int ) $_REQUEST['start'] : 0 ),
-            'range'=> ( isset( $_REQUEST['range'] ) ? ( int ) $_REQUEST['range'] : 20 ),
+            'start' => ( isset( $_REQUEST['start'] ) ? ( int ) $_REQUEST['start'] : 0 ),
+            'range' => ( isset( $_REQUEST['range'] ) ? ( int ) $_REQUEST['range'] : 20 ),
+            'total' => '',
         );
     }
 
@@ -138,6 +148,15 @@ class Pv_Core_Model {
      */
     public function get_paged( ) {
         return $this->db->get_results( $this->_fetch_paged_sql( ) );
+    }
+
+    /**
+     * Gets paged results
+     *
+     * @return     mixed    paged result rows
+     */
+    public function get_pagination( ) {
+        return $this->pagination( ));
     }
 
     /**
