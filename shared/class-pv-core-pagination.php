@@ -12,6 +12,12 @@
 
 if ( ! class_exists( 'Pv_Core_Pagination' ) ) {
 	class Pv_Core_Pagination {
+		protected $plugin_name;
+		protected $version;
 
+        public function __construct( $plugin_name, $version ) {
+            $this->plugin_name = $plugin_name;
+            $this->version = $version;
+        }
 	}
 }

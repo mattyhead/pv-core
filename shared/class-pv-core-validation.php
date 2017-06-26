@@ -12,15 +12,15 @@
 if ( ! class_exists( 'Pv_Core_Validation' ) ) {
     class Pv_Core_Validation {
 
-        private $data;
-        private $messages;
-        private $processing;
-        private $scrubbable;
-        private $plugin;
-        private $version;
+        protected $data;
+        protected $messages;
+        protected $processing;
+        protected $scrubbable;
+        protected $plugin;
+        protected $version;
 
-        public function __construct( $plugin, $version ) {
-            $this->plugin = $plugin;
+        public function __construct( $plugin_name, $version ) {
+            $this->plugin_name = $plugin_name;
             $this->version = $version;
         }
 
@@ -103,7 +103,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
                     // element not set at all or is falsy
                     if ( !isset($this->data[$field]) || !$this->data['field']) {
                         $valid = false;
-                        $this->addMessage( $process['label'] . __( ' is required.'), $this->plugin );
+                        $this->addMessage( $process['label'] . __( ' is required.'), $this->plugin_name );
                         // go on to next field
                         continue;
                     }
