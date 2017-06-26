@@ -75,6 +75,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 			$this->data = $this->scrubbable ? $this->scrub( $data ) : $data;
 
 			unset( $data );
+		}
 
 		/**
 		 * Set the rules.
