@@ -21,15 +21,6 @@ class Pv_Core_Model {
     protected $primary_key = 'id';
 
     /**
-     * fields stub.
-     *
-     * @since    1.0.0
-     * @access   public
-     * @var      mixed
-     */
-    protected $fields = array('id', 'created', 'modified');
-
-    /**
      * The tablename
      *
      * @since    1.0.0
@@ -54,7 +45,7 @@ class Pv_Core_Model {
      * @access   public
      * @var      mixed     start / stop
      */
-    protected $validation;
+    protected $validator;
 
     /**
      * The pagination array
