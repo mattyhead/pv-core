@@ -12,11 +12,34 @@
 if ( ! class_exists( 'Pv_Core_Validation' ) ) {
     class Pv_Core_Validation {
 
+        /**
+         * Data to be validated
+         */
         protected $data;
+
+        /**
+         * Validation messages
+         */
         protected $messages;
+
+        /**
+         * Processing data
+         */
         protected $processing;
+
+        /**
+         * Can we scrub this table's input?
+         */
         protected $scrubbable;
-        protected $plugin;
+
+        /**
+         * Plugin Name
+         */
+        protected $plugin_name;
+
+        /**
+         * Plugin version
+         */
         protected $version;
 
         public function __construct( $plugin_name, $version ) {
