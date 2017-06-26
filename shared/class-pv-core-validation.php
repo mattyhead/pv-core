@@ -33,21 +33,6 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
         protected $scrubbable;
 
         /**
-         * Plugin Name
-         */
-        protected $plugin_name;
-
-        /**
-         * Plugin version
-         */
-        protected $version;
-
-        public function __construct( $plugin_name, $version ) {
-            $this->plugin_name = $plugin_name;
-            $this->version = $version;
-        }
-
-        /**
          * Gets the value of messages.
          *
          * @return mixed
@@ -126,7 +111,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
                     // element not set at all or is falsy
                     if ( !isset($this->data[$field]) || !$this->data['field']) {
                         $valid = false;
-                        $this->addMessage( $process['label'] . __( ' is required.'), $this->plugin_name );
+                        $this->addMessage( $process['label'] . ' is required.' );
                         // go on to next field
                         continue;
                     }
@@ -151,7 +136,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
                 foreach ( $process[$field]['validate'] as $function ) {
                     if ( method_exists( $this, $function ) ) {
                         if ( !$this->$function($this->data[$field]) ) {
-                            $this->addMessage( $process[$field]['label'] . __( ' failed validation: ' ) . $function );
+                            $this->addMessage( $process[$field]['label'] . ' failed validation: ' . $function );
                             $valid=false;
                             array_push($invalidated, array($field,$function));
                         }
