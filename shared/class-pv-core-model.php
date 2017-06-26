@@ -147,7 +147,7 @@ class Pv_Core_Model {
      * @return     mixed    paged result rows
      */
     public function get_pagination( ) {
-        return $this->pagination( );
+        return $this->pagination;
     }
 
     /**
