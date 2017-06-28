@@ -39,6 +39,15 @@ class Pv_Core_Model {
     protected $db;
 
     /**
+     * The validation array
+     *
+     * @since    1.0.0
+     * @access   public
+     * @var      mixed     start / stop
+     */
+    protected $validator;
+
+    /**
      * The pagination array
      *
      * @since    1.0.0
