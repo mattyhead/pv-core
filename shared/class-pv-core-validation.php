@@ -69,7 +69,6 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
                 $this->messages = array( $value );
                 return;
             }
-
             array_push( $this->messages, $value );
         }
 
@@ -396,6 +395,13 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
         }
 
 
+        /**
+         * { function_description }
+         *
+         * @param      <type>  $data   The data
+         *
+         * @return     <type>  ( description_of_the_return_value )
+         */
         public function filter ( $data ) {
 
             foreach ( $data as $key->$value ) {

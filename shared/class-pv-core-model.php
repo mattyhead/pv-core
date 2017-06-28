@@ -226,5 +226,4 @@ class Pv_Core_Model {
         return strtotime( $date . ' GMT' );
     }
 
-
 }
