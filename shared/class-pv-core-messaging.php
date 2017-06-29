@@ -41,7 +41,7 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
 
         public function queue( $message, $type ) {
             d('in queue');
-            self::$message = $message;
+            self::message = $message;
             switch ( $type ) {
                 case 'error':
                 break;
