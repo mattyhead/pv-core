@@ -16,6 +16,7 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
         static protected $message;
 
         public function success( ) {
+            d('in success');
             $class = "notice notice-success";
             $message = __( self::$message, $plugin_name );
 
@@ -23,6 +24,7 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
         }
 
         public function failure( ) {
+            d('in failure');
             $class = "notice notice-failure";
             $message = __( self::$message, $plugin_name );
 
@@ -30,6 +32,7 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
         }
 
         public function notice( ) {
+            d('in notice');
             $class = "notice notice-info";
             $message = __( self::$message, $plugin_name );
 
@@ -37,6 +40,7 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
         }
 
         public function queue( $message, $type ) {
+            d('in queue');
             self::$message = $message;
             switch ( $type ) {
                 case 'error':
