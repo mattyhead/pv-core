@@ -11,25 +11,40 @@
  */
 class Pv_Core_Static_Messaging {
 
-    public function success( $array ) {
+    protected $plugin_name;
+
+    public function success( $message ) {
         $class = "notice notice-success";
-        $message = __( $array['message'], $array['plugin_name'] );
+        $message = __( $message, $plugin_name );
 
         printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) ); 
     }
 
-    public function failure( $array ) {
+    public function failure( $message ) {
         $class = "notice notice-failure";
-        $message = __( $array['message'], $array['plugin_name'] );
+        $message = __( $message, $plugin_name );
 
         printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) ); 
     }
 
-    public function notice( $array ) {
+    public function notice( $message ) {
         $class = "notice notice-info";
-        $message = __( $array['message'], $array['plugin_name'] );
+        $message = __( $message, $plugin_name );
 
         printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) ); 
+    }
+
+    public function queue( $message, $type ) {
+        switch ( $type ) {
+            case 'error':
+            break;
+            case 'notice':
+            break;
+            default: // 'success'
+                add_action( 'admin_notices', $function_to_add, $priority, $accepted_args );
+            break;
+        }
+
     }
 
 }
