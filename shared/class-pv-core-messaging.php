@@ -9,42 +9,44 @@
  * @subpackage Pv_Elections_Core/db
  * @author     matthew murphy <matthew.e.murphy@phila.gov>
  */
-class Pv_Core_Static_Messaging {
+if ( ! class_exists( 'Pv_Core_Validation' ) ) {
+    class Pv_Core_Messaging {
 
-    protected $plugin_name;
+        protected $plugin_name;
 
-    public function success( $message ) {
-        $class = "notice notice-success";
-        $message = __( $message, $plugin_name );
+        public function success( $message ) {
+            $class = "notice notice-success";
+            $message = __( $message, $plugin_name );
 
-        printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) ); 
-    }
+            printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) ); 
+        }
 
-    public function failure( $message ) {
-        $class = "notice notice-failure";
-        $message = __( $message, $plugin_name );
+        public function failure( $message ) {
+            $class = "notice notice-failure";
+            $message = __( $message, $plugin_name );
 
-        printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) ); 
-    }
+            printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) ); 
+        }
 
-    public function notice( $message ) {
-        $class = "notice notice-info";
-        $message = __( $message, $plugin_name );
+        public function notice( $message ) {
+            $class = "notice notice-info";
+            $message = __( $message, $plugin_name );
 
-        printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) ); 
-    }
+            printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) ); 
+        }
 
-    public function queue( $message, $type ) {
-        switch ( $type ) {
-            case 'error':
-            break;
-            case 'notice':
-            break;
-            default: // 'success'
-                add_action( 'admin_notices', $function_to_add, $priority, $accepted_args );
-            break;
+        public function queue( $message, $type ) {
+            switch ( $type ) {
+                case 'error':
+                break;
+                case 'notice':
+                break;
+                default: // 'success'
+                    add_action( 'admin_notices', $function_to_add, $priority, $accepted_args );
+                break;
+            }
+
         }
 
     }
-
 }
