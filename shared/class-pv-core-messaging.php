@@ -13,36 +13,38 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
     class Pv_Core_Messaging {
 
         protected $plugin_name;
+        static protected $message;
 
-        public function success( $message ) {
+        public function success( ) {
             $class = "notice notice-success";
-            $message = __( $message, $plugin_name );
+            $message = __( self::$message, $plugin_name );
 
             printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) ); 
         }
 
-        public function failure( $message ) {
+        public function failure( ) {
             $class = "notice notice-failure";
-            $message = __( $message, $plugin_name );
+            $message = __( self::$message, $plugin_name );
 
             printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) ); 
         }
 
-        public function notice( $message ) {
+        public function notice( ) {
             $class = "notice notice-info";
-            $message = __( $message, $plugin_name );
+            $message = __( self::$message, $plugin_name );
 
             printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) ); 
         }
 
         public function queue( $message, $type ) {
+            self::$message = $message
             switch ( $type ) {
                 case 'error':
                 break;
                 case 'notice':
                 break;
                 default: // 'success'
-                    add_action( 'admin_notices', $function_to_add, $priority, $accepted_args );
+                    add_action( 'admin_notices', $this->success, 10 );
                 break;
             }
 
