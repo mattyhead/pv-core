@@ -18,7 +18,7 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
         public function success( ) {
             d('in success');
             $class = "notice notice-success";
-            $message = __( $this->$message, $plugin_name );
+            $message = __( $this->message, $plugin_name );
 
             printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) ); 
         }
@@ -26,7 +26,7 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
         public function failure( ) {
             d('in failure');
             $class = "notice notice-failure";
-            $message = __( $this->$message, $plugin_name );
+            $message = __( $this->message, $plugin_name );
 
             printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) ); 
         }
@@ -34,7 +34,7 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
         public function notice( ) {
             d('in notice');
             $class = "notice notice-info";
-            $message = __( $this->$message, $plugin_name );
+            $message = __( $this->message, $plugin_name );
 
             printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) ); 
         }
