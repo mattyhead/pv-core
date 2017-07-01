@@ -48,7 +48,7 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
                 case 'notice':
                 break;
                 default: // 'success'
-                    add_action( 'admin_notices', $this->success, 10 );
+                    add_action( 'admin_notices', $this->success(), 10 );
                 break;
             }
 
