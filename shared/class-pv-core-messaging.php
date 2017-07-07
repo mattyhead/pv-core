@@ -15,7 +15,7 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
     class Pv_Core_Messaging {
 
         protected $plugin_name;
-        protected $message;
+        protected $message = "your message here";
 
         public function __construct( ) {
 
@@ -26,40 +26,38 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
         public function success( ) {
 
             $class = "notice notice-success";
-            $message = "Success :)";//__( $this->message, $this->plugin_name );
 
-            printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) ); 
+            printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $this->message ) ); 
 
         }
 
         public function failure( ) {
 
             $class = "notice notice-failure";
-            $message = "Failure :(";//__( $this->message, $plugin_name );
 
-            printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) ); 
+            printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $this->message ) ); 
 
         }
 
         public function notice( ) {
 
             $class = "notice notice-info";
-            $message = $this->message;//__( $this->message, $plugin_name );
 
-            printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) ); 
+            printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $this->message ) ); 
 
         }
 
         public function queue( ) {
 
-            if ( isset( $_REQUEST['message'] ) ) {
+            if ( isset( $_REQUEST['status'] ) ) {
 
-                switch ( $_REQUEST['message'] ) {
+                $this->message = isset( $_REQUEST['message'] ) ? $_REQUEST['message'] : '' ;
+                switch ( $_REQUEST['status'] ) {
                     case 'success':
-                        add_action( 'admin_notices', $this->success(), 10, 0 );
+                        add_action( 'admin_notices', $this->success( ) );
                     break;
                     case 'failure':
-                        add_action( 'admin_notices', $this->failure(), 10, 0 );
+                        add_action( 'admin_notices', $this->failure( ) );
                     break;
                 }
 
