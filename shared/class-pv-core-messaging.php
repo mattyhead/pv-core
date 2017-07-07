@@ -15,44 +15,56 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
         protected $plugin_name;
         protected $message;
 
+        public function __construct( ) {
+
+            $this->queue( );
+
+        }
+
         public function success( ) {
-            d('in success');
+
             $class = "notice notice-success";
-            $message = $this->message;//__( $this->message, $this->plugin_name );
+            $message = "Success :)";//__( $this->message, $this->plugin_name );
 
             printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) ); 
+
         }
 
         public function failure( ) {
-            d('in failure');
+
             $class = "notice notice-failure";
-            $message = $this->message;//__( $this->message, $plugin_name );
+            $message = "Failure :(";//__( $this->message, $plugin_name );
 
             printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) ); 
+
         }
 
         public function notice( ) {
-            d('in notice');
+
             $class = "notice notice-info";
             $message = $this->message;//__( $this->message, $plugin_name );
 
             printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $message ) ); 
+
         }
 
         public function queue( $message, $type ) {
-            d('in queue');
-            $this->message = $message;
-            switch ( $type ) {
-                case 'error':
-                break;
-                case 'notice':
-                break;
-                default: // 'success'
-                    add_action( 'admin_notices', $this->success(), 10 );
-                break;
+
+            if ( isset( $_REQUEST['message'] ) ) {
+
+                switch ( $_REQUEST['message'] ) {
+                    case 'success':
+                        add_action( 'admin_notices', $this->success(), 10 );
+                    break;
+                    case 'failure':
+                        add_action( 'admin_notices', $this->failure(), 10 );
+                    break;
+                }
+
             }
 
         }
 
     }
+
 }
