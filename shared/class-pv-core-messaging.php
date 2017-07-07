@@ -54,10 +54,10 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
 
                 switch ( $_REQUEST['message'] ) {
                     case 'success':
-                        add_action( 'admin_notices', $this->success(), 10 );
+                        add_action( 'admin_notices', $this->success(), 10, 0 );
                     break;
                     case 'failure':
-                        add_action( 'admin_notices', $this->failure(), 10 );
+                        add_action( 'admin_notices', $this->failure(), 10, 0 );
                     break;
                 }
 
