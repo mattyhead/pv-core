@@ -49,15 +49,15 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
 
         public function queue( ) {
 
-            if ( isset( $_REQUEST['status'] ) ) {
+            if ( isset( $_REQUEST['pvstatus'] ) ) {
 
-                $this->message = isset( $_REQUEST['message'] ) ? $_REQUEST['message'] : '' ;
-                switch ( $_REQUEST['status'] ) {
+                $this->message = isset( $_REQUEST['pvmessage'] ) ? $_REQUEST['pvmessage'] : '' ;
+                switch ( $_REQUEST['pvstatus'] ) {
                     case 'success':
-                        add_action( 'admin_notices', $this->success( ) );
+                        add_action( 'admin_notices', $this->success( ), 10, 0 );
                     break;
                     case 'failure':
-                        add_action( 'admin_notices', $this->failure( ) );
+                        add_action( 'admin_notices', $this->failure( ), 10, 0 );
                     break;
                 }
 
