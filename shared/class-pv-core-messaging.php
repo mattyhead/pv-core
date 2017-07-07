@@ -9,7 +9,9 @@
  * @subpackage Pv_Elections_Core/db
  * @author     matthew murphy <matthew.e.murphy@phila.gov>
  */
+
 if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
+
     class Pv_Core_Messaging {
 
         protected $plugin_name;
