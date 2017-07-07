@@ -48,7 +48,7 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
 
         }
 
-        public function queue( $message, $type ) {
+        public function queue( ) {
 
             if ( isset( $_REQUEST['message'] ) ) {
 
