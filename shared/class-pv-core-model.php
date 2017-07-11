@@ -122,7 +122,7 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
 		 * @param      mixed $data   The data.
 		 */
 		public function insert( $data ) {
-			$this->dbase->insert( $this->dbase->prefix . $this->tablename, $data );
+			return $this->dbase->insert( $this->dbase->prefix . $this->tablename, $data );
 		}
 
 		/**
