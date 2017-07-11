@@ -122,7 +122,7 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
 		 * @param      mixed $data   The data.
 		 */
 		public function insert( $data ) {
-			return $this->dbase->insert( $this->dbase->prefix . $this->tablename, $data );
+			dd( $this->dbase->insert( $this->dbase->prefix . $this->tablename, $data ) );
 		}
 
 		/**
@@ -151,6 +151,10 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
 		 * @return     bool  result of delete query
 		 */
 		public function delete( $value ) {
+			if ( ! ( int ) $value ) {
+				return false;
+			}
+
 			$sql = sprintf( ' DELETE FROM `%s` WHERE `%s` = %%s ', $this->dbase->prefix . $this->tablename, $this->primary_key );
 			return $this->dbase->query( $this->dbase->prepare( $sql, $value ) );
 		}
