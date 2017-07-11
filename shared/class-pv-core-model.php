@@ -122,8 +122,8 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
 		 * @param      mixed $data   The data.
 		 */
 		public function insert( $data ) {
-			unset( $data['action'], $data['submit'] );
-			dd( $this->dbase->insert( $this->dbase->prefix . $this->tablename, $data ) );
+
+			return $this->dbase->insert( $this->dbase->prefix . $this->tablename, $data );
 		}
 
 		/**
@@ -135,11 +135,7 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
 		 * @return     <type>  ( description_of_the_return_value )
 		 */
 		public function update( $data, $where = null ) {
-			if ( ! isset( $where ) ) {
-				// it's item on the outsied, data on the inside.
-				$where = array( 'id' => ( int ) $data['item'] );
-			}
-			unset( $data['item'], $data['action'], $data['submit'] );
+
 			$data['updated'] = $this->now();
 			return $this->dbase->update( $this->dbase->prefix . $this->tablename, $data, $where );
 		}
