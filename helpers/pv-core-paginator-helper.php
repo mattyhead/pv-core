@@ -22,7 +22,7 @@ if ( ! class_exists( 'Pv_Core_Paginator_Helper' ) ) {
             $this->pagination = $pagination;
         }
 
-        public function get_list_footer ( ) {
+        public function get_list_footer () {
         	?>
         	<div class="navigation">
 			    <div class="first panel left"><a href="#">&lt;&lt;First</a></div>

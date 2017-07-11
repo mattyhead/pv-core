@@ -48,7 +48,7 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
          */
         protected $pagination;
 
-        public function __construct( ) {
+        public function __construct() {
             global $wpdb;
 
             $this->db = &$wpdb;
@@ -65,7 +65,7 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
          *
          * @return     string  table name
          */
-        private function _table( ) {
+        private function _table() {
             return $this->db->prefix . $this->tablename;
         }
 
@@ -80,7 +80,7 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
             if ( !( int ) $value ) {
                 return false;
             }
-            $sql = sprintf( ' SELECT * FROM `%s` WHERE `%s` = %%s ', $this->_table( ), $this->primary_key );
+            $sql = sprintf( ' SELECT * FROM `%s` WHERE `%s` = %%s ', $this->_table(), $this->primary_key );
             return $this->db->prepare( $sql, ( int ) $value );
         }
 
@@ -89,8 +89,8 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
          *
          * @return     string    WP prepared sql
          */
-        private function _fetch_all_sql( ) {
-            $sql = sprintf( ' SELECT * FROM `%s` ', $this->_table( ) );
+        private function _fetch_all_sql() {
+            $sql = sprintf( ' SELECT * FROM `%s` ', $this->_table() );
             return $this->db->prepare( $sql );
         }
 
@@ -99,8 +99,8 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
          *
          * @return     string    WP prepared sql
          */
-        private function _fetch_paged_sql( ) {
-            $sql = sprintf( ' SELECT * FROM `%s` LIMIT %%d, %%d ', $this->_table( ) );
+        private function _fetch_paged_sql() {
+            $sql = sprintf( ' SELECT * FROM `%s` LIMIT %%d, %%d ', $this->_table() );
             return $this->db->prepare( $sql, $this->pagination->start, $this->pagination->range );
         }
 
@@ -120,8 +120,8 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
          *
          * @return     mixed   all rows
          */
-        public function get_all( ) {
-            return $this->db->get_results( $this->_fetch_all_sql( ) );
+        public function get_all() {
+            return $this->db->get_results( $this->_fetch_all_sql() );
         }
 
         /**
@@ -129,8 +129,8 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
          *
          * @return     mixed    paged result rows
          */
-        public function get_paged( ) {
-            return $this->db->get_results( $this->_fetch_paged_sql( ) );
+        public function get_paged() {
+            return $this->db->get_results( $this->_fetch_paged_sql() );
         }
 
         /**
@@ -138,7 +138,7 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
          *
          * @return     mixed    paged result rows
          */
-        public function get_pagination( ) {
+        public function get_pagination() {
             return $this->pagination;
         }
 
@@ -147,7 +147,7 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
          *
          * @return     string  The tablename.
          */
-        public function get_tablename( ) {
+        public function get_tablename() {
             return $this->tablename;
         }
 
@@ -157,7 +157,7 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
          * @param      mixed  $data   The data
          */
         public function insert( $data ) {
-            $this->db->insert( $this->_table( ), $data );
+            $this->db->insert( $this->_table(), $data );
         }
 
         /**
@@ -172,7 +172,7 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
             }
             unset($data['item'], $data['action'], $data['submit']);
             $data['updated'] = $this->now();
-            $this->db->update( $this->_table( ), $data, $where );
+            $this->db->update( $this->_table(), $data, $where );
         }
 
         /**
@@ -183,7 +183,7 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
          * @return     bool  result of delete query
          */
         public function delete( $value ) {
-            $sql = sprintf( ' DELETE FROM `%s` WHERE `%s` = %%s ', $this->_table( ), $this->primary_key );
+            $sql = sprintf( ' DELETE FROM `%s` WHERE `%s` = %%s ', $this->_table(), $this->primary_key );
             return $this->db->query( $this->db->prepare( $sql, $value ) );
         }
 
@@ -192,7 +192,7 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
          *
          * @return     <type>  ( description_of_the_return_value )
          */
-        public function insert_id( ) {
+        public function insert_id() {
             return $this->db->insert_id;
         }
 
@@ -212,8 +212,8 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
          *
          * @return     datetime
          */
-        public function now( ) {
-            return $this->time_to_date( time( ) );
+        public function now() {
+            return $this->time_to_date( time() );
         }
 
         /**

@@ -37,7 +37,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
          *
          * @return mixed
          */
-        public function getMessages( ) {
+        public function getMessages() {
             return $this->messages;
         }
 
@@ -46,7 +46,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
          *
          * @return mixed
          */
-        public function getData( ) {
+        public function getData() {
             return $this->data;
         }
 
@@ -55,7 +55,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
          *
          * @return mixed
          */
-        public function getRules( ) {
+        public function getRules() {
             return $this->rules;
         }
 
@@ -77,7 +77,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
          *
          * @return mixed
          */
-        public function setData( ) {
+        public function setData() {
             $data = $this->filter( $_REQUEST );
             $this->data = $this->scrubbable ? $this->scrub( $data ) : $data;
 
@@ -98,11 +98,11 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
          *
          * @return     bool  success of the validation operation overall
          */
-        public function run( ) {
+        public function run() {
             $valid = true;
             $invaliated = array();
 
-            $this->setData( );
+            $this->setData();
 
             foreach ( $this->processing as $field=>$process ) {
                 // start with requirement and existence
@@ -147,7 +147,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
         }
 
         /**
-         * shim for PHP ctype_alpha( )
+         * shim for PHP ctype_alpha()
          *
          * @param      string   $value  a possible alphabetic value
          *
@@ -158,7 +158,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
         }
 
         /**
-         * negating shim for PHP empty( )
+         * negating shim for PHP empty()
          *
          * @param      string   $value  a possible non-empty value
          *
@@ -169,7 +169,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
         }
 
         /**
-         * shim for PHP is_numeric( ).
+         * shim for PHP is_numeric().
          *
          * @param      string   $value  a possible numeric value
          *
@@ -343,7 +343,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
         }
 
         /**
-         * Scrub whitespace ( trim( ) plus no multiple \t|\n|\s )
+         * Scrub whitespace ( trim() plus no multiple \t|\n|\s )
          *
          * @param      mixed  $data   all the form data
          *
@@ -361,7 +361,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
         }
 
         /**
-         * shim for WP sanitize_email( )
+         * shim for WP sanitize_email()
          *
          * @param      string  $value  a possible email
          *
@@ -384,7 +384,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
         }
 
         /**
-         * shim for WP sanitize_text_field( )
+         * shim for WP sanitize_text_field()
          *
          * @param      string  $value  text input value
          *

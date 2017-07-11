@@ -12,59 +12,60 @@
 
 if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
 
-    class Pv_Core_Messaging {
+	/**
+	 * Shared automated messaging object
+	 */
+	class Pv_Core_Messaging {
 
-        protected $plugin_name;
-        protected $message = "your message here";
+		protected $message = 'your message here';
 
-        public function __construct( ) {
+		public function __construct() {
 
-            $this->queue( );
+			$this->queue();
 
-        }
+		}
 
-        public function success( ) {
+		public function success() {
 
-            $class = "notice notice-success";
+			$class = 'notice notice-success';
 
-            printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $this->message ) ); 
+			printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $this->message ) );
 
-        }
+		}
 
-        public function failure( ) {
+		public function failure() {
 
-            $class = "notice notice-failure";
+			$class = 'notice notice-failure';
 
-            printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $this->message ) ); 
+			printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $this->message ) );
 
-        }
+		}
 
-        public function notice( ) {
+		public function notice() {
 
-            $class = "notice notice-info";
+			$class = 'notice notice-info';
 
-            printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $this->message ) ); 
+			printf( '<div class="%1$s"><p>%2$s</p></div>', esc_attr( $class ), esc_html( $this->message ) );
 
-        }
+		}
 
-        public function queue( ) {
+		public function queue() {
 
-            if ( isset( $_REQUEST['pvstatus'] ) ) {
+			if ( isset( $_REQUEST['pvstatus'] ) ) {
 
-                $this->message = isset( $_REQUEST['pvmessage'] ) ? $_REQUEST['pvmessage'] : '' ;
-                switch ( $_REQUEST['pvstatus'] ) {
-                    case 'success':
-                        add_action( 'admin_notices', $this->success( ), 10, 0 );
-                    break;
-                    case 'failure':
-                        add_action( 'admin_notices', $this->failure( ), 10, 0 );
-                    break;
-                }
+				$this->message = isset( $_REQUEST['pvmessage'] ) ? sanitize_text_field( wp_unslash( $_REQUEST['pvmessage'] ) ) : '' ;
+				switch ( $_REQUEST['pvstatus'] ) {
+					case 'success':
+						add_action( 'admin_notices', array( $this, 'success' ), 10, 0 );
+					break;
+					case 'failure':
+						add_action( 'admin_notices', array( $this, 'failure' ), 10, 0 );
+					break;
+				}
+			}
 
-            }
+		}
 
-        }
-
-    }
+	}
 
 }
