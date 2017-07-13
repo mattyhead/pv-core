@@ -94,14 +94,14 @@ if ( ! class_exists( 'Pv_Core_Division_Lookup' ) ) {
 				)
 			);
 
-			if ( isset( $payload['response'] ) && 200 == $payload['response'] ) {
+			if ( isset( $payload['response'] ) && 200 == $payload['response']['code'] ) {
 				$this->results = json_decode( $payload['body'] );
 			}
 			ddd(sprintf(
 				$this->service_url,
 				rawurlencode( $this->data['address1'] ),
 				$this->key
-			), $this->data, $payload, json_decode( $payload['body'] ), $this->results );
+			), $this->data, $payload, $this->results );
 		}
 
 		/**
