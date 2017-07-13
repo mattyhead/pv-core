@@ -90,7 +90,7 @@ if ( ! class_exists( 'Pv_Core_Division_Lookup' ) ) {
 				wp_remote_get(
 					sprintf(
 						$this->service_url,
-						$this->data['street_address'],
+						$this->data['address1'],
 						$this->key
 					)
 				)
