@@ -10,7 +10,7 @@
  * @author     matthew murphy <matthew.e.murphy@phila.gov>
  */
 
-if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
+if ( ! class_exists( 'Pv_Core_Model' ) ) {
 	/**
 	 * Parent model
 	 */
@@ -121,8 +121,9 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
 		 *
 		 * @param      mixed $data   The data.
 		 */
-		public function insert( $data ) {
+		public function insert( &$data ) {
 
+			$data['created'] = $this->now();
 			return $this->dbase->insert( $this->dbase->prefix . $this->tablename, $data );
 		}
 
