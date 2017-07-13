@@ -108,11 +108,6 @@ if ( ! class_exists( 'Pv_Core_Division_Lookup' ) ) {
 			if ( isset( $payload['response'] ) && 200 == $payload['response']['code'] ) {
 				$this->results = json_decode( $payload['body'] );
 			}
-			ddd(sprintf(
-				$this->service_url,
-				rawurlencode( $this->data['address1'] ),
-				$this->key
-			), $this->data, $payload, $this->results, $this->get_division(), $this->get_coords()  );
 		}
 
 		/**
