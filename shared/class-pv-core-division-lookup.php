@@ -93,7 +93,11 @@ if ( ! class_exists( 'Pv_Core_Division_Lookup' ) ) {
 					$this->key
 				)
 			);
-			ddd( $this->data, $this->results );
+			ddd(sprintf(
+					$this->service_url,
+					$this->data['address1'],
+					$this->key
+				), $this->data, $this->results );
 		}
 
 		/**
