@@ -10,12 +10,12 @@
  * @author     matthew murphy <matthew.e.murphy@phila.gov>
  */
 
-if ( ! class_exists( 'Pv_Core_Division_Lookup' ) ) {
+if ( ! class_exists( 'Pv_Core_Address_Lookup' ) ) {
 
 	/**
 	 * Shared simple division lookup class
 	 */
-	class Pv_Core_Division_Lookup {
+	class Pv_Core_Address_Lookup {
 
 		/**
 		 * Local copy of the data.
@@ -30,6 +30,13 @@ if ( ! class_exists( 'Pv_Core_Division_Lookup' ) ) {
 		 * @var string $key
 		 **/
 		public $key = 'f2e3e82987f8a1ef78ca9d9d3cfc7f1d';
+
+		/**
+		 * Which feature.
+		 *
+		 * @var int $index
+		 **/
+		public $index;
 
 		/**
 		 * Return from $service_url
@@ -62,8 +69,8 @@ if ( ! class_exists( 'Pv_Core_Division_Lookup' ) ) {
 		 */
 		public function get_coords() {
 			return array(
-				'lng' => $this->results->features[0]->geometry->coordinates[0],
-				'lat' => $this->results->features[0]->geometry->coordinates[1],
+				'lng' => $this->results->features[ $this->index ]->geometry->coordinates[0],
+				'lat' => $this->results->features[ $this->index ]->geometry->coordinates[1],
 			);
 		}
 
@@ -73,7 +80,7 @@ if ( ! class_exists( 'Pv_Core_Division_Lookup' ) ) {
 		 * @return     mixed $this->results The division.
 		 */
 		public function get_division() {
-			return $this->results->features[0]->properties->election_precinct;
+			return $this->results->features[ $this->index ]->properties->election_precinct;
 		}
 
 		/**
@@ -108,6 +115,12 @@ if ( ! class_exists( 'Pv_Core_Division_Lookup' ) ) {
 			if ( isset( $payload['response'] ) && 200 == $payload['response']['code'] ) {
 				$this->results = json_decode( $payload['body'] );
 			}
+
+			$this->index = 0;
+			if ( 'exact' === $this->results->features[1]->match_type ) {
+				$this->index = 1;
+			}
+
 		}
 
 		/**
