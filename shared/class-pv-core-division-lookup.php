@@ -84,6 +84,15 @@ if ( ! class_exists( 'Pv_Core_Address_Lookup' ) ) {
 		}
 
 		/**
+		 * Gets the whole ($index) record.
+		 *
+		 * @return     mixed $this->results The division.
+		 */
+		public function get_all() {
+			return $this->results->features[ $this->index ];
+		}
+
+		/**
 		 * Gets the division.
 		 *
 		 * @return     mixed $this->results The division.
