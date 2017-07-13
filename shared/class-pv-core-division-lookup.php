@@ -99,7 +99,7 @@ if ( ! class_exists( 'Pv_Core_Division_Lookup' ) ) {
 			}
 			ddd(sprintf(
 				$this->service_url,
-				urlencode( $this->data['address1'] ),
+				rawurlencode( $this->data['address1'] ),
 				$this->key
 			), $this->data, $payload, json_decode( $payload['body'] ), $this->results );
 		}
