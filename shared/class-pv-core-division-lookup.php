@@ -43,7 +43,7 @@ if ( ! class_exists( 'Pv_Core_Division_Lookup' ) ) {
 		 *
 		 * @var string $service_url
 		 */
-		public $service_url = 'https://api.phila.gov/ais/v1/search/%s?gatekeeperKey%s';
+		public $service_url = 'https://api.phila.gov/ais/v1/search/%s?gatekeeperKey=%s';
 
 		/**
 		 * Setup.
