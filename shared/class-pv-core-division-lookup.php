@@ -95,6 +95,7 @@ if ( ! class_exists( 'Pv_Core_Division_Lookup' ) ) {
 					)
 				)
 			);
+			ddd( $this->results );
 		}
 
 		/**
