@@ -86,18 +86,22 @@ if ( ! class_exists( 'Pv_Core_Division_Lookup' ) ) {
 		 * Does the actual work.
 		 */
 		public function process_address() {
-			$this->results = wp_remote_get(
+			$payload = wp_remote_get(
 				sprintf(
 					$this->service_url,
 					urlencode( $this->data['address1'] ),
 					$this->key
 				)
 			);
+
+			if ( isset( $payload['response'] ) && 200 == $payload['response'] ) {
+				$this->results = json_decode( $payload['body'] );
+			}
 			ddd(sprintf(
-					$this->service_url,
-					urlencode( $this->data['address1'] ),
-					$this->key
-				), $this->data, $this->results );
+				$this->service_url,
+				urlencode( $this->data['address1'] ),
+				$this->key
+			), $this->data, $payload, $this->results );
 		}
 
 		/**
