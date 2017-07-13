@@ -112,7 +112,7 @@ if ( ! class_exists( 'Pv_Core_Division_Lookup' ) ) {
 				$this->service_url,
 				rawurlencode( $this->data['address1'] ),
 				$this->key
-			), $this->data, $payload, $this->results, $this->get_division() );
+			), $this->data, $payload, $this->results, $this->get_division(), $this->get_coords()  );
 		}
 
 		/**
