@@ -101,7 +101,7 @@ if ( ! class_exists( 'Pv_Core_Division_Lookup' ) ) {
 				$this->service_url,
 				urlencode( $this->data['address1'] ),
 				$this->key
-			), $this->data, $payload, $this->results );
+			), $this->data, $payload, json_decode( $payload['body'] ), $this->results );
 		}
 
 		/**
