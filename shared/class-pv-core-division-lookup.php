@@ -56,6 +56,18 @@ if ( ! class_exists( 'Pv_Core_Division_Lookup' ) ) {
 		}
 
 		/**
+		 * Gets the coordinates.
+		 *
+		 * @return     mixed $this->results The division.
+		 */
+		public function get_coords() {
+			return array(
+				'lat' => $this->results->features[0]->properties->coordinates[0],
+				'lng' => $this->results->features[0]->properties->coordinates[1],
+			);
+		}
+
+		/**
 		 * Gets the division.
 		 *
 		 * @return     mixed $this->results The division.
@@ -63,7 +75,6 @@ if ( ! class_exists( 'Pv_Core_Division_Lookup' ) ) {
 		public function get_division() {
 			return $this->results->features[0]->properties->election_precinct;
 		}
-
 
 		/**
 		 * Gets the division.
