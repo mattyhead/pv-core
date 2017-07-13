@@ -5,8 +5,8 @@
  * @link       philadelphiavotes.com
  * @since      1.0.0
  *
- * @package    Pv_Elections_Core
- * @subpackage Pv_Elections_Core/db
+ * @package    Pv_Core
+ * @subpackage Pv_Core/shared
  * @author     matthew murphy <matthew.e.murphy@phila.gov>
  */
 
