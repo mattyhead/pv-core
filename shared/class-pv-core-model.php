@@ -133,9 +133,9 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 		 * @param      mixed $data   The data.
 		 * @param      array $where  The where.
 		 *
-		 * @return     <type>  ( description_of_the_return_value )
+		 * @return     bool  result of the update query.
 		 */
-		public function update( $data, $where = null ) {
+		public function update( &$data, $where = null ) {
 
 			$data['updated'] = $this->now();
 			return $this->dbase->update( $this->dbase->prefix . $this->tablename, $data, $where );
@@ -144,9 +144,9 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 		/**
 		 * Delete a row
 		 *
-		 * @param      int $value  The value.
+		 * @param      int $value  Id of the row to delete.
 		 *
-		 * @return     bool  result of delete query
+		 * @return     bool  result of delete query.
 		 */
 		public function delete( $value ) {
 			if ( ! ( int ) $value ) {
