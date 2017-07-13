@@ -89,13 +89,13 @@ if ( ! class_exists( 'Pv_Core_Division_Lookup' ) ) {
 			$this->results = wp_remote_get(
 				sprintf(
 					$this->service_url,
-					$this->data['address1'],
+					urlencode( $this->data['address1'] ),
 					$this->key
 				)
 			);
 			ddd(sprintf(
 					$this->service_url,
-					$this->data['address1'],
+					urlencode( $this->data['address1'] ),
 					$this->key
 				), $this->data, $this->results );
 		}
