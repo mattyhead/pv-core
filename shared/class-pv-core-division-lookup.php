@@ -29,7 +29,7 @@ if ( ! class_exists( 'Pv_Core_Division_Lookup' ) ) {
 		 *
 		 * @var string $key
 		 **/
-		public $key;
+		public $key = 'f2e3e82987f8a1ef78ca9d9d3cfc7f1d';
 
 		/**
 		 * Return from $service_url
@@ -95,7 +95,7 @@ if ( ! class_exists( 'Pv_Core_Division_Lookup' ) ) {
 					)
 				)
 			);
-			ddd( $this->results );
+			ddd( $data, $this->results );
 		}
 
 		/**
