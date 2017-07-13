@@ -62,8 +62,8 @@ if ( ! class_exists( 'Pv_Core_Division_Lookup' ) ) {
 		 */
 		public function get_coords() {
 			return array(
-				'lat' => $this->results->features[0]->properties->coordinates[0],
-				'lng' => $this->results->features[0]->properties->coordinates[1],
+				'lat' => $this->results->features[0]->geometry->coordinates[0],
+				'lng' => $this->results->features[0]->geometry->coordinates[1],
 			);
 		}
 
