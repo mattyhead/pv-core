@@ -84,6 +84,15 @@ if ( ! class_exists( 'Pv_Core_Address_Lookup' ) ) {
 		}
 
 		/**
+		 * Gets the division.
+		 *
+		 * @return     mixed $this->results The division.
+		 */
+		public function get_postcode() {
+			return $this->results->features[ $this->index ]->properties->zip_code;
+		}
+
+		/**
 		 * Gets the whole ($index) record.
 		 *
 		 * @return     mixed $this->results The division.
