@@ -24,12 +24,22 @@ if ( ! class_exists( 'Pv_Core_Helper_Paginator' ) ) {
 		protected $pagination;
 
 		/**
+		 * Plugin name
+		 *
+		 * @var mixed $plugin_name
+		 */
+		protected $plugin_name;
+
+		/**
 		 * Constructor
 		 *
+		 * @param      mixed $plugin_name  Plugin name.
 		 * @param      mixed $pagination  The pagination.
 		 */
-		public function setup( $pagination ) {
+		public function setup( $plugin_name, $pagination ) {
+
 			$this->pagination = $pagination;
+			$this->plugin_name = $plugin_name;
 		}
 
 		/**
@@ -62,10 +72,10 @@ if ( ! class_exists( 'Pv_Core_Helper_Paginator' ) ) {
 
 			?>
 			<div class="row-actions visible">
-				<span class="first panel left"><?php echo $first; ?> |</span>
-				<span class="previous panel left"><?php echo $previous; ?> |</span>>
-				<span class="next panel right"><?php echo $next; ?> |</span>
-				<span class="last panel right"><?php echo $last; ?></span>
+				<span class="first panel left"><?php echo esc_html( $first ); ?> |</span>
+				<span class="previous panel left"><?php echo esc_html( $previous ); ?> |</span>>
+				<span class="next panel right"><?php echo esc_html( $next ); ?> |</span>
+				<span class="last panel right"><?php echo esc_html( $last ); ?></span>
 			</div>
 			<?php
 		}
