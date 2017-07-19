@@ -37,10 +37,10 @@ if ( ! class_exists( 'Pv_Core_Helper_Paginator' ) ) {
 		 */
 		public function get_list_footer() {
 			?>
-			<div class="navigation">
-				<span class="first panel left"><a href="#">&lt;&lt;First</a></span>
-				<span class="previous panel left"><a href="#">&lt;Previous</a></span>
-				<span class="next panel right"><a href="#">Next&gt;</a></span>
+			<div class="row-actions visible">
+				<span class="first panel left"><a href="#">&lt;&lt;First</a> |</span>
+				<span class="previous panel left"><a href="#">&lt;Previous</a> |</span>
+				<span class="next panel right"><a href="#">Next&gt;</a> |</span>
 				<span class="last panel right"><a href="#">Last&gt;&gt;</a></span>
 			</div>
 			<?php
