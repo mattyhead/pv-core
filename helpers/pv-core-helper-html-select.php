@@ -100,7 +100,7 @@ if ( ! class_exists( 'Pv_Core_Helper_Html_Select' ) ) {
 		 * @param Integer $select_size the numbers of rows for the select.
 		 * @param String  $optional_tag_elems additional tag information.
 		 */
-		public function __construct( $select_name, $select_size = 0, $optional_tag_elems = '' ) {
+		public function __construct( $select_name = null , $select_size = 0, $optional_tag_elems = '' ) {
 			$this->select_name = $select_name;
 			$this->select_size = $select_size;
 			$this->optional_tag_elems = $optional_tag_elems;
@@ -118,6 +118,28 @@ if ( ! class_exists( 'Pv_Core_Helper_Html_Select' ) ) {
 		public function add_item( $item_display, $item_value, $selected = false ) {
 			$this->item_array[ $this->item_count ][0] = $item_display;
 			$this->item_array[ $this->item_count ][1] = $item_value;
+
+			if ( $selected ) {
+				$this->selected_index = $this->item_count;
+			}
+
+			$this->item_count++;
+			return $this->item_count;
+		}
+
+		/**
+		 * Adds an item and it's value to the list
+		 *
+		 * @param String  $item_display the text to display in an item.
+		 * @param String  $item_value the value to send on form submit.
+		 * @param Boolean $selected true if this item is the default.
+		 * @return Integer the item index.
+		 */
+		public function add_items( $items_array, $selected = '' ) {
+			foreach ( $items_array as $item_value => $item_display ) {
+				$this->add_item( $item_display, $item_display,  );
+			}
+			
 
 			if ( $selected ) {
 				$this->selected_index = $this->item_count;
