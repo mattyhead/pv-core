@@ -10,11 +10,11 @@
  * @author     matthew murphy <matthew.e.murphy@phila.gov>
  */
 
-if ( ! class_exists( 'Pv_Core_Paginator_Helper' ) ) {
+if ( ! class_exists( 'Pv_Core_Helper_Paginator' ) ) {
 	/**
 	 * Class for pv core paginator helper.
 	 */
-	class Pv_Core_Paginator_Helper {
+	class Pv_Core_Helper_Paginator {
 
 		/**
 		 * Pagination
@@ -38,10 +38,10 @@ if ( ! class_exists( 'Pv_Core_Paginator_Helper' ) ) {
 		public function get_list_footer() {
 			?>
 			<div class="navigation">
-				<div class="first panel left"><a href="#">&lt;&lt;First</a></div>
-				<div class="previous panel left"><a href="#">&lt;Previous</a></div>
-				<div class="next panel right"><a href="#">Next&gt;</a></div>
-				<div class="last panel right"><a href="#">Last&gt;&gt;</a></div>
+				<span class="first panel left"><a href="#">&lt;&lt;First</a></span>
+				<span class="previous panel left"><a href="#">&lt;Previous</a></span>
+				<span class="next panel right"><a href="#">Next&gt;</a></span>
+				<span class="last panel right"><a href="#">Last&gt;&gt;</a></span>
 			</div>
 			<?php
 		}
