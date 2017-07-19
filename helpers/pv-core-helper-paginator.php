@@ -28,7 +28,7 @@ if ( ! class_exists( 'Pv_Core_Helper_Paginator' ) ) {
 		 *
 		 * @param      mixed $pagination  The pagination.
 		 */
-		public function setup( $pagination = null ) {
+		public function setup( $pagination ) {
 			$this->pagination = $pagination;
 		}
 
@@ -36,12 +36,36 @@ if ( ! class_exists( 'Pv_Core_Helper_Paginator' ) ) {
 		 * Gets the list footer.
 		 */
 		public function get_list_footer() {
+
+			$first = '&lt;&lt; first';
+			$previous = '&lt; previous';
+			$next = 'next &gt;';
+			$last = 'last &gt;&gt;';
+
+			$base_link = admin_url( 'admin.php?page=' . $this->plugin_name );
+
+			if ( $this->pagination->first ) {
+				$first = '<a href="' . esc_attr( $base_link . $this->pagination->first ) . '">' . $first . '</a>';
+			}
+
+			if ( $this->pagination->previous ) {
+				$previous = '<a href="' . esc_attr( $base_link . $this->pagination->previous ) . '">' . $previous . '</a>';
+			}
+
+			if ( $this->pagination->next ) {
+				$name = '<a href="' . esc_attr( $base_link . $this->pagination->name ) . '">' . $name . '</a>';
+			}
+
+			if ( $this->pagination->last ) {
+				$last = '<a href="' . esc_attr( $base_link . $this->pagination->last ) . '">' . $last . '</a>';
+			}
+
 			?>
 			<div class="row-actions visible">
-				<span class="first panel left"><a href="#">&lt;&lt; first</a> |</span>
-				<span class="previous panel left"><a href="#">&lt; previous</a> |</span>
-				<span class="next panel right"><a href="#">next &gt;</a> |</span>
-				<span class="last panel right"><a href="#">last &gt;&gt;</a></span>
+				<span class="first panel left"><?php echo $first; ?> |</span>
+				<span class="previous panel left"><?php echo $previous; ?> |</span>>
+				<span class="next panel right"><?php echo $next; ?> |</span>
+				<span class="last panel right"><?php echo $last; ?></span>
 			</div>
 			<?php
 		}
