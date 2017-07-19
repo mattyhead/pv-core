@@ -47,10 +47,10 @@ if ( ! class_exists( 'Pv_Core_Helper_Paginator' ) ) {
 		 */
 		public function get_list_footer() {
 
-			$first = '&lt;&lt; first';
-			$previous = '&lt; previous';
-			$next = 'next &gt;';
-			$last = 'last &gt;&gt;';
+			$first = '&lt;&lt;first';
+			$previous = '&lt;previous';
+			$next = 'next&gt;';
+			$last = 'last&gt;&gt;';
 
 			$base_link = admin_url( 'admin.php?page=' . $this->plugin_name );
 
