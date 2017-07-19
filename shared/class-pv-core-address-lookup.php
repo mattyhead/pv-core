@@ -57,7 +57,7 @@ if ( ! class_exists( 'Pv_Core_Address_Lookup' ) ) {
 		 *
 		 * @param      mixed $data   The data.
 		 */
-		public function __construct( $data ) {
+		public function set_data( $data ) {
 			$this->data = &$data;
 			$this->process_address();
 		}
