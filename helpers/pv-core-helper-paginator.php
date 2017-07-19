@@ -28,7 +28,7 @@ if ( ! class_exists( 'Pv_Core_Helper_Paginator' ) ) {
 		 *
 		 * @param      mixed $pagination  The pagination.
 		 */
-		public function __construct( $pagination = null ) {
+		public function setup( $pagination = null ) {
 			$this->pagination = $pagination;
 		}
 

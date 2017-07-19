@@ -100,7 +100,7 @@ if ( ! class_exists( 'Pv_Core_Helper_Html_Select' ) ) {
 		 * @param Integer $select_size the numbers of rows for the select.
 		 * @param String  $optional_tag_elems additional tag information.
 		 */
-		public function __construct( $select_name = null, $select_size = 0, $optional_tag_elems = '' ) {
+		public function setup( $select_name, $select_size = 0, $optional_tag_elems = '' ) {
 			$this->select_name = $select_name;
 			$this->select_size = $select_size;
 			$this->optional_tag_elems = $optional_tag_elems;
