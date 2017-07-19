@@ -116,7 +116,7 @@ if ( ! class_exists( 'Pv_Core_Address_Lookup' ) ) {
 			$payload = wp_remote_get(
 				sprintf(
 					$this->service_url,
-					urlencode( $this->data['address1'] ),
+					rawurlencode( $this->data['address1'] ),
 					$this->key
 				)
 			);
