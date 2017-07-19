@@ -73,7 +73,7 @@ if ( ! class_exists( 'Pv_Core_Helper_Paginator' ) ) {
 			?>
 			<div class="row-actions visible">
 				<span class="first panel left"><?php echo esc_html( $first ); ?> |</span>
-				<span class="previous panel left"><?php echo esc_html( $previous ); ?> |</span>>
+				<span class="previous panel left"><?php echo esc_html( $previous ); ?> |</span>
 				<span class="next panel right"><?php echo esc_html( $next ); ?> |</span>
 				<span class="last panel right"><?php echo esc_html( $last ); ?></span>
 			</div>
