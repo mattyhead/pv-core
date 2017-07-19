@@ -236,7 +236,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 				return false;
 			}
 
-			return true;
+			return $value;
 		}
 
 		/**
@@ -312,3 +312,36 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 
 	}
 }
+/*
+        }
+        // we need a 2-digit region
+        if (JString::strlen($this->region) !== 2) {
+            $this->setError(JText::_('VALIDATION STATE REQUIRED'));
+            $error++;
+        }
+        // we need a 5 numeric digits starting from the left in out postcode
+        if (!is_numeric($this->postcode)) {
+            $this->setError(JText::_('VALIDATION ZIPCODE REQUIRED'));
+            $error++;
+        }
+        // if we have an email, we need a valid email
+        if ($this->email && !filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+            $this->setError($this->email . JText::_('VALIDATION EMAIL INVALID'));
+            $error++;
+        }
+        if ($this->phone) {
+            // reject phone numbers with letters in them
+            if (!is_numeric($this->phone)) {
+                $this->setError(JText::_('VALIDATION PHONE NUMERIC'));
+                $error++;
+            }
+            // Phone numbers may be given with the leading '1' or not
+            if (JString::strlen($this->phone) !== 10) {
+                $this->setError(JText::_('VALIDATION PHONE LENGTH'));
+                $error++;
+            }
+        } else {
+            $this->setError(JText::_('VALIDATION PHONE EMPTY'));
+            $error++;
+        }
+*/
