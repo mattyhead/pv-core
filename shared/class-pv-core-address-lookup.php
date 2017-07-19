@@ -126,7 +126,7 @@ if ( ! class_exists( 'Pv_Core_Address_Lookup' ) ) {
 			}
 
 			$this->index = 0;
-			if ( 'exact' === $this->results->features[1]->match_type ) {
+			if ( isset( $this->results->features[1] ) && 'exact' === $this->results->features[1]->match_type ) {
 				$this->index = 1;
 			}
 
