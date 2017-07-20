@@ -10,7 +10,7 @@
  * @author     matthew murphy <matthew.e.murphy@phila.gov>
  */
 
-if ( class_exists( 'Pv_Core_Combo_Data' ) ) {
+if ( ! class_exists( 'Pv_Core_Combo_Data' ) ) {
 
 	/**
 	 * Pv_Core_Combo_Data provides some static arrays useful in rendering UI combo boxes
