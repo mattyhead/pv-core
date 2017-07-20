@@ -41,7 +41,7 @@
  * echo $list->getHTML();
  */
 
-if ( ! class_exists( 'Pv_Core_Helper_Html_Select' ) ) {
+if ( ! class_exists( 'Pv_Core_Helper_Select' ) ) {
 	/**
 	 * HTMLSelectList Class for PHP5
 	 * creates SELECT dropdown tag HTML
@@ -49,7 +49,7 @@ if ( ! class_exists( 'Pv_Core_Helper_Html_Select' ) ) {
 	 * @version 1.1
 	 * @author Jeff L. Williams
 	 */
-	class Pv_Core_Helper_Html_Select {
+	class Pv_Core_Helper_Select {
 
 		/**
 		 * Name of select
