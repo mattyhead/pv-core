@@ -32,7 +32,7 @@
  * echo "\n<br /><br />\n";
  *
  * - Remove the style information and change the size.
- * $list->optional_tag_elems = '';
+ * $list->optional_attrs = '';
  * $list->select_size = 4;
  * $list->select_item_by_display('Yellow');
  * $list->select_item_by_value('Color3'); // You can also select by value.
@@ -75,9 +75,9 @@ if ( ! class_exists( 'Pv_Core_Helper_Html_Select' ) ) {
 		/**
 		 * Additional tag information
 		 *
-		 * @var string $optional_tag_elems
+		 * @var string $optional_attrs
 		 */
-		public  $optional_tag_elems;
+		public  $optional_attrs;
 
 		/**
 		 * Item information
@@ -97,13 +97,15 @@ if ( ! class_exists( 'Pv_Core_Helper_Html_Select' ) ) {
 		 * Constructor: Sets parameters for the class on create
 		 *
 		 * @param String  $select_name the name of the select.
+		 * @param String  $selected 'display' of the selected option.
 		 * @param Integer $select_size the numbers of rows for the select.
-		 * @param String  $optional_tag_elems additional tag information.
+		 * @param String  $optional_attrs additional tag information.
 		 */
-		public function setup( $select_name, $select_size = 0, $optional_tag_elems = '' ) {
+		public function setup( $select_name, $selected, $select_size = 0, $optional_attrs = '' ) {
+			$this->selected = $selected;
 			$this->select_name = $select_name;
 			$this->select_size = $select_size;
-			$this->optional_tag_elems = $optional_tag_elems;
+			$this->optional_attrs = $optional_attrs;
 			$this->item_count = 0;
 		}
 
@@ -130,21 +132,13 @@ if ( ! class_exists( 'Pv_Core_Helper_Html_Select' ) ) {
 		/**
 		 * Adds an item and it's value to the list
 		 *
-		 * @param String  $items_array the text to display in an item.
-		 * @param Boolean $selected true if this item is the default.
+		 * @param  String $items_array the text to display in an item.
 		 * @return Integer the item index.
 		 */
-		public function add_items( $items_array, $selected = '' ) {
+		public function add_items( $items_array ) {
 			foreach ( $items_array as $item_value => $item_display ) {
-				$this->add_item( $item_display, $item_value, $selected );
+				$this->add_item( $item_display, $item_value, ( $this->selected == $item_display ? true : false ) );
 			}
-
-			if ( $selected ) {
-				$this->selected_index = $this->item_count;
-			}
-
-			$this->item_count++;
-			return $this->item_count;
 		}
 
 		/**
@@ -220,8 +214,8 @@ if ( ! class_exists( 'Pv_Core_Helper_Html_Select' ) ) {
 				$html .= ' size="' . $this->select_size . '"';
 			}
 
-			if ( strlen( $this->optional_tag_elems ) > 0 ) {
-				$html .= ' ' . $this->optional_tag_elems;
+			if ( strlen( $this->optional_attrs ) > 0 ) {
+				$html .= ' ' . $this->optional_attrs;
 			}
 
 			$html .= '>';
