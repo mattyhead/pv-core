@@ -142,8 +142,8 @@ if ( ! class_exists( 'Pv_Core_Helper_Select' ) ) {
 		 * @param  String $items_array the text to display in an item.
 		 */
 		public function add_items( $items_array ) {
-			foreach ( $items_array as $item_value => $item_display ) {
-				dd($item_value, $item_display);
+			foreach ( $items_array as $item ) {
+				dd($item);
 				$this->add_item( $item_display, $item_value, ( $this->selected == $item_display ? true : false ) );
 			}
 		}
