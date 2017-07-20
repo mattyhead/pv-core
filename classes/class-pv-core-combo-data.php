@@ -6,7 +6,7 @@
  * @since      1.0.0
  *
  * @package    Pv_Core
- * @subpackage Pv_Core/shared
+ * @subpackage Pv_Core/classes
  * @author     matthew murphy <matthew.e.murphy@phila.gov>
  */
 

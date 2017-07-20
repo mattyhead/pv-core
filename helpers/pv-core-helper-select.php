@@ -47,7 +47,7 @@ if ( ! class_exists( 'Pv_Core_Helper_Select' ) ) {
 	 * creates SELECT dropdown tag HTML
 	 *
 	 * @version 1.1
-	 * @author Jeff L. Williams
+	 * @author Jeff L. Williams - later mangled by Matthew Murphy
 	 */
 	class Pv_Core_Helper_Select {
 
