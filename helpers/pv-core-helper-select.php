@@ -252,13 +252,11 @@ if ( ! class_exists( 'Pv_Core_Helper_Select' ) ) {
 		 * Gets the combo data.
 		 *
 		 * @param      String $prop_name  The property name.
-		 *
-		 * @return     array  The combo data.
 		 */
 		public function get_combo_data( $prop_name ) {
 			require_once WP_PLUGIN_DIR . '/pv-core/classes/class-pv-core-combo-data.php';
 
-			return Pv_Core_Combo_Data::gets( $prop_name );
+			$this->add_items( Pv_Core_Combo_Data::gets( $prop_name ) );
 		}
 	}
 }
