@@ -133,7 +133,6 @@ if ( ! class_exists( 'Pv_Core_Helper_Html_Select' ) ) {
 		 * Adds an item and it's value to the list
 		 *
 		 * @param  String $items_array the text to display in an item.
-		 * @return Integer the item index.
 		 */
 		public function add_items( $items_array ) {
 			foreach ( $items_array as $item_value => $item_display ) {
