@@ -164,8 +164,8 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 		 */
 		public function delete_all() {
 
-			$sql = sprintf( ' DELETE FROM %%s WHERE 1 ' );
-			return $this->dbase->query( $this->dbase->prepare( $sql, $this->dbase->prefix . $this->tablename ) );
+			$sql = sprintf( ' DELETE FROM %s WHERE %%s ', $this->dbase->prefix . $this->tablename );
+			return $this->dbase->query( $this->dbase->prepare( $sql, 1 ) );
 		}
 
 		/**
