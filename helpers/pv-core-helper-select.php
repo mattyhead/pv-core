@@ -117,7 +117,7 @@ if ( ! class_exists( 'Pv_Core_Helper_Select' ) ) {
 		}
 
 		/**
-		 * Adds an item and it's value to the list
+		 * Adds an item and its value to the list
 		 *
 		 * @param String  $item_display the text to display in an item.
 		 * @param String  $item_value the value to send on form submit.
@@ -137,12 +137,12 @@ if ( ! class_exists( 'Pv_Core_Helper_Select' ) ) {
 		}
 
 		/**
-		 * Adds an item and it's value to the list
+		 * Adds an item and its value to the list
 		 *
 		 * @param  String $items_array the text to display in an item.
 		 */
 		public function add_items( $items_array ) {
-			foreach ( $items_array as $item ) {
+			foreach ( $items_array as $item ) { dd($item);
 				$this->add_item( $item['value'], $item['idx'], ( $this->selected == $item['value'] ? true : false ) );
 			}
 		}
