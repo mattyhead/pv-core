@@ -143,8 +143,7 @@ if ( ! class_exists( 'Pv_Core_Helper_Select' ) ) {
 		 */
 		public function add_items( $items_array ) {
 			foreach ( $items_array as $item ) {
-				dd($item);
-				$this->add_item( $item_display, $item_value, ( $this->selected == $item_display ? true : false ) );
+				$this->add_item( $item['value'], $item['idx'], ( $this->selected == $item['value'] ? true : false ) );
 			}
 		}
 
