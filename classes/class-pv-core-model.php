@@ -158,6 +158,16 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 		}
 
 		/**
+		 * Delete all rows
+		 *
+		 * @return     bool  result of delete query.
+		 */
+		public function delete_all() {
+			$sql = ' TRUNCATE TABLE %s ';
+			return $this->dbase->query( $this->dbase->prepare( $sql, $this->dbase->prefix . $this->tablename ) );
+		}
+
+		/**
 		 * Retrieve the last ID
 		 *
 		 * @return     <type>  ( description_of_the_return_value )
