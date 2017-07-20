@@ -52,6 +52,34 @@ if ( ! class_exists( 'Pv_Core_Helper_Select' ) ) {
 	class Pv_Core_Helper_Select {
 
 		/**
+		 * Combo data
+		 *
+		 * @var mixed $combo_data
+		 */
+		public  $combo_data;
+
+		/**
+		 * Item information
+		 *
+		 * @var array $item_array
+		 */
+		private $item_array;
+
+		/**
+		 * Number of items
+		 *
+		 * @var int $item_count
+		 */
+		private $item_count;
+
+		/**
+		 * Additional tag information
+		 *
+		 * @var string $optional_attrs
+		 */
+		public  $optional_attrs;
+
+		/**
 		 * Name of select
 		 *
 		 * @var string $select_name
@@ -71,27 +99,6 @@ if ( ! class_exists( 'Pv_Core_Helper_Select' ) ) {
 		 * @var int $selected_index
 		 */
 		public  $selected_index;
-
-		/**
-		 * Additional tag information
-		 *
-		 * @var string $optional_attrs
-		 */
-		public  $optional_attrs;
-
-		/**
-		 * Item information
-		 *
-		 * @var array $item_array
-		 */
-		private $item_array;
-
-		/**
-		 * Number of items
-		 *
-		 * @var int $item_count
-		 */
-		private $item_count;
 
 		/**
 		 * Constructor: Sets parameters for the class on create
@@ -239,6 +246,19 @@ if ( ! class_exists( 'Pv_Core_Helper_Select' ) ) {
 			$html .= "\n" . '</select>';
 
 			return $html;
+		}
+
+		/**
+		 * Gets the combo data.
+		 *
+		 * @param      String $prop_name  The property name.
+		 *
+		 * @return     array  The combo data.
+		 */
+		public function get_combo_data( $prop_name ) {
+			require_once WP_PLUGIN_DIR . '/pv-core/classes/class-pv-core-combo-data.php';
+
+			return Pv_Core_Combo_Data::gets( $prop_name );
 		}
 	}
 }
