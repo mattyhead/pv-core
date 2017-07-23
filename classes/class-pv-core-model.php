@@ -138,6 +138,7 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 		public function update( &$data, $where = null ) {
 
 			$data['updated'] = $this->now();
+			dd($this->dbase->prefix . $this->tablename, $data, $where);
 			return $this->dbase->update( $this->dbase->prefix . $this->tablename, $data, $where );
 		}
 
