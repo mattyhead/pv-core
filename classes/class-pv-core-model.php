@@ -89,8 +89,8 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 		 * @return     mixed   all rows
 		 */
 		public function get_all() {
-			$sql = sprintf( ' SELECT * FROM `%s` ', $this->dbase->prefix . $this->tablename );
-			$prepared_sql = $this->dbase->prepare( $sql );
+			$sql = ' SELECT * FROM `%s` ' ;
+			$prepared_sql = $this->dbase->prepare( $sql, $this->dbase->prefix . $this->tablename );
 
 			return $this->dbase->get_results( $prepared_sql );
 		}
