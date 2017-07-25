@@ -120,7 +120,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 						$valid = false;
 						$this->set_message( $process['label'] . ' is required.' );
 						// go on to next field.
-						dd( 'continuing' );
+						d( 'continuing' );
 						continue;
 					}
 				}
