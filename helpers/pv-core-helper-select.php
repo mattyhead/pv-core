@@ -235,6 +235,7 @@ if ( ! class_exists( 'Pv_Core_Helper_Select' ) ) {
 
 				if ( $index == $this->selected_index ) {
 					$html .= '" selected="selected">';
+					dd('selectd');
 				} else {
 					$html .= '">';
 				}
