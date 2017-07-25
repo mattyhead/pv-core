@@ -117,7 +117,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 					// element not set at all or is falsy.
 					if ( ! isset( $this->data[ $field ] ) || ! $this->data[ $field ] ) {
 						$valid = false;
-						$this->addMessage( $process['label'] . ' is required.' );
+						$this->set_message( $process['label'] . ' is required.' );
 						// go on to next field.
 						continue;
 					}
@@ -141,7 +141,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 				foreach ( $process[ $field ]['validate'] as $function ) {
 					if ( method_exists( $this, $function ) ) {
 						if ( ! $this->$function( $this->data[ $field ] ) ) {
-							$this->addMessage( $process[ $field ]['label'] . ' failed validation: ' . $function );
+							$this->set_message( $process[ $field ]['label'] . ' failed validation: ' . $function );
 							$valid = false;
 							array_push( $invalidated, array( $field, $function ) );
 						}
@@ -310,6 +310,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 
 	}
 }
+
 /*
         }
         // we need a 2-digit region
