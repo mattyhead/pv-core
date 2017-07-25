@@ -50,7 +50,8 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 		 * @param      <type> $data   The data.
 		 */
 		public function __construct( $data ) {
-			$this->data = $this->scrubbable ? $this->scrub( $data ) : $data;
+			$data = $this->scrubbable ? $this->scrub( $data ) : $data;
+			$this->data = $this->filter( $data );
 		}
 
 		/**
