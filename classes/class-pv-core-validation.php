@@ -120,7 +120,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 						$valid = false;
 						$this->set_message( $process['label'] . ' is required.' );
 						// go on to next field.
-						d( 'continuing' );
+						dd( 'continuing' );
 						continue;
 					}
 				}
@@ -131,13 +131,9 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 				if ( count( $process['sanitize'] ) ) {
 					// loop through assigned sanitize functions.
 					foreach ( $process['sanitize'] as $function ) {
-						d( $function );
 						if ( method_exists( $this, $function ) ) {
 							// let's run our extant method, $function.
 							$this->data[ $field ] = $this->$function( $this->data[ $field ] );
-							d( $field );
-						} else {
-							d( $this->data[ $field ] );
 						}
 					}
 				}
