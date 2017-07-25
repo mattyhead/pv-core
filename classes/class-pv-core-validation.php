@@ -128,28 +128,32 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 				// initialize $function.
 				$function = '';
 
-				// loop through assigned sanitize functions.
-				foreach ( $process[ $field ]['sanitize'] as $function ) {
-					d($function);
-					if ( method_exists( $this, $function ) ) {
-						// let's run our extant method, $function.
-						$this->data[ $field ] = $this->$function( $this->data[ $field ] );
-						d($field );
-					} else {
-d($this->data[ $field ]);
+				if ( count( $process[ $field ]['sanitize'] ) ) {
+					// loop through assigned sanitize functions.
+					foreach ( $process[ $field ]['sanitize'] as $function ) { // undefined index
+						d($function);
+						if ( method_exists( $this, $function ) ) {
+							// let's run our extant method, $function.
+							$this->data[ $field ] = $this->$function( $this->data[ $field ] );
+							d($field );
+						} else {
+	d($this->data[ $field ]);
+						}
 					}
 				}
 
 				// re-initialize $function.
 				$function = '';
 
-				// loop through assigned validation functions.
-				foreach ( $process[ $field ]['validate'] as $function ) {
-					if ( method_exists( $this, $function ) ) {
-						if ( ! $this->$function( $this->data[ $field ] ) ) {
-							$this->set_message( $process[ $field ]['label'] . ' failed validation: ' . $function );
-							$valid = false;
-							array_push( $invalidated, array( $field, $function ) );
+				if ( count ( $process[ $field ]['validate'] ) ) {
+					// loop through assigned validation functions.
+					foreach ( $process[ $field ]['validate'] as $function ) { // invalid argument
+						if ( method_exists( $this, $function ) ) {
+							if ( ! $this->$function( $this->data[ $field ] ) ) {
+								$this->set_message( $process[ $field ]['label'] . ' failed validation: ' . $function );
+								$valid = false;
+								array_push( $invalidated, array( $field, $function ) );
+							}
 						}
 					}
 				}
