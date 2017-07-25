@@ -131,7 +131,9 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 				foreach ( $process[ $field ]['sanitize'] as $function ) {
 					if ( method_exists( $this, $function ) ) {
 						// let's run our extant method, $function.
-						$this->$function( $this->data[ $field ] );
+						$this->data[ $field ] = $this->$function( $this->data[ $field ] );
+					} else {
+d($this->data[ $field ]);
 					}
 				}
 
