@@ -113,9 +113,6 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 			$invalidated = array();
 
 			foreach ( $this->processing as $field => $process ) {
-				dd($field, $process['sanitize'], $this->processing, $this->data[$field]);
-
-
 				// start with requirement and existence.
 				if ( $process['required'] ) {
 					// element not set at all or is falsy.
@@ -123,6 +120,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 						$valid = false;
 						$this->set_message( $process['label'] . ' is required.' );
 						// go on to next field.
+						d('continuing');
 						continue;
 					}
 				}
