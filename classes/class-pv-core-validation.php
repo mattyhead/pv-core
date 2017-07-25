@@ -132,6 +132,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 					if ( method_exists( $this, $function ) ) {
 						// let's run our extant method, $function.
 						$this->data[ $field ] = $this->$function( $this->data[ $field ] );
+						d($field );
 					} else {
 d($this->data[ $field ]);
 					}
