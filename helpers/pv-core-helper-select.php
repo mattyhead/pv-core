@@ -245,7 +245,7 @@ $i = 0;
 
 			// create the closing tag.
 			$html .= "\n" . '</select>';
-dd($i);
+dd($i, $html);
 			return $html;
 		}
 
