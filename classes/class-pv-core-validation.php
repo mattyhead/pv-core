@@ -113,7 +113,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 			$invalidated = array();
 
 			foreach ( $this->processing as $field => $process ) {
-				dd($field, $process, $this->processing, $this->data[$field]);
+				dd($field, $process['sanitize'], $this->processing, $this->data[$field]);
 
 
 				// start with requirement and existence.
