@@ -216,7 +216,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 		public function is_us_state( $value ) {
 			require_once 'class-pv-core-combo-data.php';
 
-			return array_key_exists( $value, Pv_Core_Combo_Data::get('states') );
+			return array_key_exists( $value, Pv_Core_Combo_Data::state );
 		}
 
 		/**
