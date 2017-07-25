@@ -120,7 +120,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 						$valid = false;
 						$this->set_message( $process['label'] . ' is required.' );
 						// go on to next field.
-						d('continuing');
+						d( 'continuing' );
 						continue;
 					}
 				}
@@ -130,14 +130,14 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 
 				if ( count( $process['sanitize'] ) ) {
 					// loop through assigned sanitize functions.
-					foreach ( $process['sanitize'] as $function ) { // undefined index
-						d($function);
+					foreach ( $process['sanitize'] as $function ) {
+						d( $function );
 						if ( method_exists( $this, $function ) ) {
 							// let's run our extant method, $function.
 							$this->data[ $field ] = $this->$function( $this->data[ $field ] );
-							d($field );
+							d( $field );
 						} else {
-	d($this->data[ $field ]);
+							d( $this->data[ $field ] );
 						}
 					}
 				}
@@ -145,9 +145,9 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 				// re-initialize $function.
 				$function = '';
 
-				if ( count ( $process['validate'] ) ) {
+				if ( count( $process['validate'] ) ) {
 					// loop through assigned validation functions.
-					foreach ( $process['validate'] as $function ) { // invalid argument
+					foreach ( $process['validate'] as $function ) {
 						if ( method_exists( $this, $function ) ) {
 							if ( ! $this->$function( $this->data[ $field ] ) ) {
 								$this->set_message( $process['label'] . ' failed validation: ' . $function );
@@ -216,7 +216,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 		public function is_us_state( $value ) {
 			require_once 'class-pv-core-combo-data.php';
 
-			return array_key_exists( $value, Pv_Core_Combo_Data::states );
+			return array_key_exists( $value, Pv_Core_Combo_Data::get('states') );
 		}
 
 		/**
