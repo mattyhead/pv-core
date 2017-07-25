@@ -205,18 +205,9 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 		 * @return     boolean  True if us state, False otherwise.
 		 */
 		public function is_us_state( $value ) {
-			$states = 'Alabama, Alaska, American Samoa, Arizona, Arkansas, California, Colorado, Connecticut, ';
-			$states .= 'Delaware, District of Columbia, Federated States of Micronesia, Florida, Georgia, Guam, ';
-			$states .= 'Hawaii, Idaho, Illinois, Indiana, Iowa, Kansas, Kentucky, Louisiana, ';
-			$states .= 'Maine, Marshall Islands, Maryland, Massachusetts, Michigan, Minnesota, Mississippi, Missouri, Montana, ';
-			$states .= 'Nebraska, Nevada, New Hampshire, New Jersey, New Mexico, New York, North Carolina, North Dakota, Northern Mariana Islands, ';
-			$states .= 'Ohio, Oklahoma, Oregon, Palau, Pennsylvania, Puerto Rico, Rhode Island,South Carolina, South Dakota, ';
-			$states .= 'Tennessee, Texas, Utah, Vermont, Virgin Islands, Virginia, Washington, West Virginia, Wisconsin, Wyoming, ';
-			$states .= 'AL, AK, AS, AZ, AR, CA, CO, CT, DE, DC, FM, FL, GA, GU, HI, ID, IL, IN, IA, KS, KY, LA, ';
-			$states .= 'ME, MH, MD, MA, MI, MN, MS, MO, MP, MT, NC, ND, NE, NV, NH, NJ, NM, NY, OH, OK, OR, PW, ';
-			$states .= 'PA, PR, RI, SC, SD, TN, TX, UT, VT, VI, VA, WA, WV, WI, WY';
+			require_once 'class-pv-core-combo-data.php';
 
-			return in_array( $value, explode( ', ', $states ) );
+			return array_key_exists( $value, Pv_Core_Combo_Data::states );
 		}
 
 		/**
