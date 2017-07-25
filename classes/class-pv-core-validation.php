@@ -300,15 +300,13 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 		 */
 		public function filter( $data ) {
 
-			foreach ( $data as $key->$value ) {
+			foreach ( $data as $key => $value ) {
 				if ( array_key_exists( $key, $this->processing ) ) {
 					$filtered[ $key ] = $value;
 				}
 			}
 			return $filtered;
 		}
-
-
 	}
 }
 
