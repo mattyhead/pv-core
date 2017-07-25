@@ -111,8 +111,6 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 			$valid = true;
 			$invalidated = array();
 
-			$this->setData();
-
 			foreach ( $this->processing as $field => $process ) {
 				// start with requirement and existence.
 				if ( $process['required'] ) {
