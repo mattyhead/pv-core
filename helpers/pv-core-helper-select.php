@@ -212,7 +212,7 @@ if ( ! class_exists( 'Pv_Core_Helper_Select' ) ) {
 		 * @return String
 		 */
 		public function get_html() {
-
+$i = 0;
 			// Create the opening tag.
 			$html = '<select name="' . $this->select_name . '"';
 
@@ -234,7 +234,7 @@ if ( ! class_exists( 'Pv_Core_Helper_Select' ) ) {
 
 				if ( $index == $this->selected_index ) {
 					$html .= '" selected="selected">';
-					dd('selectd');
+					$i++;
 				} else {
 					$html .= '">';
 				}
@@ -245,7 +245,7 @@ if ( ! class_exists( 'Pv_Core_Helper_Select' ) ) {
 
 			// create the closing tag.
 			$html .= "\n" . '</select>';
-
+dd($i);
 			return $html;
 		}
 
