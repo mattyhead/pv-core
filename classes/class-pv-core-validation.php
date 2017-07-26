@@ -73,15 +73,6 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 		}
 
 		/**
-		 * Gets the value of rules.
-		 *
-		 * @return mixed
-		 */
-		public function get_rules() {
-			return $this->rules;
-		}
-
-		/**
 		 * Store a message.
 		 *
 		 * @param string $value Comment to store.
@@ -92,15 +83,6 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 			} else {
 				array_push( $this->messages, $value );
 			}
-		}
-
-		/**
-		 * Set the rules.
-		 *
-		 * @param mixed $rules Bullshit.
-		 */
-		public function set_rules( $rules ) {
-			$this->rules = $rules;
 		}
 
 		/**
