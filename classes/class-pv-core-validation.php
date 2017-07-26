@@ -129,7 +129,6 @@ d($this->processing);
 
 				if ( is_array( $process['validate'] ) || count( $process['validate'] ) ) {
 					// loop through assigned validation functions.
-					d($process);
 					foreach ( $process['validate'] as $function ) {
 						if ( method_exists( $this, $function ) ) {
 							if ( ! $this->$function( $this->data[ $field ] ) ) {
