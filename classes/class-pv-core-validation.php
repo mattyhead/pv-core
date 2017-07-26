@@ -126,7 +126,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 
 				// re-initialize $function.
 				$function = '';
-				d($process);
+				dd($process);
 				if ( count( $process['validate'] ) ) {
 					// loop through assigned validation functions.
 					d($process);
