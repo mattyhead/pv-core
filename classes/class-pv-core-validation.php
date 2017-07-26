@@ -122,6 +122,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 						$this->set_message( $process['label'] . ' is required.' );
 						// go on to next field.
 						continue;
+						d('continuing');
 					}
 				}
 
@@ -134,6 +135,8 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 						if ( method_exists( $this, $function ) ) {
 							// let's run our extant method, $function.
 							$this->data[ $field ] = $this->$function( $this->data[ $field ] );
+						} else {
+							d('method not found: ' . $function);
 						}
 					}
 				}
@@ -150,6 +153,8 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 								$valid = false;
 								array_push( $invalidated, array( $field, $function ) );
 							}
+						} else {
+							d('method not found: ' . $function);
 						}
 					}
 				}
