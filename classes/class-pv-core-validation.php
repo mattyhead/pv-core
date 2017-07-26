@@ -96,7 +96,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 			$invalidated = array();
 d($this->processing);
 			foreach ( $this->processing as $field => $process ) {
-				dd($field, $process);
+				var_dump($field, $process);
 				// start with requirement and existence.
 				if ( $process['required'] ) {
 					// element not set at all or is falsy.
@@ -105,7 +105,7 @@ d($this->processing);
 						$this->set_message( $process['label'] . ' is required.' );
 						// go on to next field.
 						continue;
-						d('continuing');
+						var_dump('continuing');
 					}
 				}
 
@@ -119,7 +119,7 @@ d($this->processing);
 							// let's run our extant method, $function.
 							$this->data[ $field ] = $this->$function( $this->data[ $field ] );
 						} else {
-							d('method not found: ' . $function);
+							var_dump('method not found: ' . $function);
 						}
 					}
 				}
@@ -138,7 +138,7 @@ d($this->processing);
 								array_push( $invalidated, array( $field, $function ) );
 							}
 						} else {
-							d('method not found: ' . $function);
+							var_dump('method not found: ' . $function);
 						}
 					}
 				}
