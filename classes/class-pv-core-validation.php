@@ -146,6 +146,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 
 				if ( count( $process['validate'] ) ) {
 					// loop through assigned validation functions.
+					d($process);
 					foreach ( $process['validate'] as $function ) {
 						if ( method_exists( $this, $function ) ) {
 							if ( ! $this->$function( $this->data[ $field ] ) ) {
