@@ -96,7 +96,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 			$invalidated = array();
 d($this->processing);
 			foreach ( $this->processing as $field => $process ) {
-				var_dump($field, $process);
+				echo "<pre>";var_dump($field, $process);echo "</pre>";
 				// start with requirement and existence.
 				if ( $process['required'] ) {
 					// element not set at all or is falsy.
@@ -119,14 +119,14 @@ d($this->processing);
 							// let's run our extant method, $function.
 							$this->data[ $field ] = $this->$function( $this->data[ $field ] );
 						} else {
-							var_dump('method not found: ' . $function);
+							echo "<pre>";var_dump('method not found: ' . $function);echo "</pre>";
 						}
 					}
 				}
 
 				// re-initialize $function.
 				$function = '';
-				dd($process);
+
 				if ( count( $process['validate'] ) ) {
 					// loop through assigned validation functions.
 					d($process);
@@ -138,7 +138,7 @@ d($this->processing);
 								array_push( $invalidated, array( $field, $function ) );
 							}
 						} else {
-							var_dump('method not found: ' . $function);
+							echo "<pre>";var_dump('method not found: ' . $function);echo "</pre>";
 						}
 					}
 				}
