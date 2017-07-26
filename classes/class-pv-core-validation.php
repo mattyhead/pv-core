@@ -14,7 +14,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 	/**
 	 * Shared validation class
 	 */
-	class Pv_Core_Validation extends Pv_Core_Wp_Validation {
+	class Pv_Core_Validation {
 
 		/**
 		 * Data to be validated
