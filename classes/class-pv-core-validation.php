@@ -14,7 +14,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 	/**
 	 * Shared validation class
 	 */
-	class Pv_Core_Validation {
+	class Pv_Core_Validation extends Pv_Core_Wp_Validation {
 
 		/**
 		 * Data to be validated
@@ -49,7 +49,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 		 *
 		 * @param      <type> $data   The data.
 		 */
-		public function __construct( $data ) {
+		public function setup( $data ) {
 			$data = $this->scrubbable ? $this->scrub( $data ) : $data;
 			$this->data = $this->filter( $data );
 		}
@@ -120,7 +120,6 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 						$valid = false;
 						$this->set_message( $process['label'] . ' is required.' );
 						// go on to next field.
-						d( 'continuing' );
 						continue;
 					}
 				}
