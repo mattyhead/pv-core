@@ -109,7 +109,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 		 * @return     bool  success of the validation operation overall
 		 */
 		public function run() {
-			$data = $this->data;
+
 			$valid = true;
 			$invalidated = array();
 
