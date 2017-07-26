@@ -154,7 +154,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 								array_push( $invalidated, array( $field, $function ) );
 							}
 						} else {
-							d('method not found: ' . $function);
+							dd('method not found: ' . $function);
 						}
 					}
 				}
