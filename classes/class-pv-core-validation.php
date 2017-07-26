@@ -155,7 +155,6 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 				}
 			}
 
-			dd( $this, $data );
 			return $valid;
 		}
 
