@@ -94,7 +94,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 
 			$valid = true;
 			$invalidated = array();
-
+dd($this->processing);
 			foreach ( $this->processing as $field => $process ) {
 				d($field, $process);
 				// start with requirement and existence.
