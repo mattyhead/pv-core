@@ -94,9 +94,8 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 
 			$valid = true;
 			$invalidated = array();
-d($this->processing);
+
 			foreach ( $this->processing as $field => $process ) {
-				echo "<pre>";var_dump($field, $process);echo "</pre>";
 				// start with requirement and existence.
 				if ( $process['required'] ) {
 					// element not set at all or is falsy.
@@ -105,7 +104,6 @@ d($this->processing);
 						$this->set_message( $process['label'] . ' is required.' );
 						// go on to next field.
 						continue;
-						var_dump('continuing');
 					}
 				}
 
@@ -113,14 +111,11 @@ d($this->processing);
 				$function = '';
 
 				if ( is_array( $process['sanitize'] ) && count( $process['sanitize'] ) ) {
-					echo "<pre>";var_dump($process['sanitize']);echo "</pre>";
 					// loop through assigned sanitize functions.
 					foreach ( $process['sanitize'] as $function ) {
 						if ( method_exists( $this, $function ) ) {
 							// let's run our extant method, $function.
 							$this->data[ $field ] = $this->$function( $this->data[ $field ] );
-						} else {
-							echo "<pre>";var_dump('method not found: ' . $function);echo "</pre>";
 						}
 					}
 				}
@@ -129,7 +124,6 @@ d($this->processing);
 				$function = '';
 
 				if ( is_array( $process['validate'] ) && count( $process['validate'] ) ) {
-					echo "<pre>";var_dump($process['validate']);echo "</pre>";
 					// loop through assigned validation functions.
 					foreach ( $process['validate'] as $function ) {
 						if ( method_exists( $this, $function ) ) {
@@ -138,13 +132,11 @@ d($this->processing);
 								$valid = false;
 								array_push( $invalidated, array( $field, $function ) );
 							}
-						} else {
-							echo "<pre>";var_dump('method not found: ' . $function);echo "</pre>";
 						}
 					}
 				}
 			}
-			dd($this->get_data());
+
 			return $valid;
 		}
 
