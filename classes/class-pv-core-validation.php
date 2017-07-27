@@ -144,7 +144,7 @@ d($this->processing);
 					}
 				}
 			}
-			dd('run finished.');
+			dd($this->get_data());
 			return $valid;
 		}
 
