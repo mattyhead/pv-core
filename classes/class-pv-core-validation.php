@@ -148,7 +148,7 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 		 * @return     boolean True if alphabetic, False otherwise.
 		 */
 		public function is_alphabetic( $value ) {
-			return ctype_alpha( $value ) || ! $this->is_extant( $value );
+			return ctype_alpha( $value );
 		}
 
 		/**
