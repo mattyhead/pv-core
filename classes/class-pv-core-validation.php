@@ -112,7 +112,7 @@ d($this->processing);
 				// initialize $function.
 				$function = '';
 
-				if ( is_array( $process['sanitize'] ) || count( $process['sanitize'] ) ) {
+				if ( is_array( $process['sanitize'] ) && count( $process['sanitize'] ) ) {
 					echo "<pre>";var_dump($process['sanitize']);echo "</pre>";
 					// loop through assigned sanitize functions.
 					foreach ( $process['sanitize'] as $function ) {
@@ -128,7 +128,7 @@ d($this->processing);
 				// re-initialize $function.
 				$function = '';
 
-				if ( is_array( $process['validate'] ) || count( $process['validate'] ) ) {
+				if ( is_array( $process['validate'] ) && count( $process['validate'] ) ) {
 					echo "<pre>";var_dump($process['validate']);echo "</pre>";
 					// loop through assigned validation functions.
 					foreach ( $process['validate'] as $function ) {
