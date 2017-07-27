@@ -189,8 +189,9 @@ d($this->processing);
 		 * @return     boolean  True if phone, False otherwise.
 		 */
 		public function is_phone( $value ) {
-			// todo.
-			return $value || true;
+			// sanitization has already stripped non-numbers and the leading '1's.
+			// Philly phone numbers must lead with area code, so 10 digits.
+			return ( strlen( $value ) === 10 );
 		}
 
 		/**
@@ -262,8 +263,8 @@ d($this->processing);
 		 * @return     string $value yet another possible phone.
 		 */
 		public function sanitize_phone( $value ) {
-			// todo -- basically, strip to numbers only.
-			return $value;
+			// Remove leading '1', strip letters.
+			return preg_replace( '/^1|\D/', '', $value );
 		}
 
 		/**
@@ -298,35 +299,26 @@ d($this->processing);
 }
 
 /*
-        }
-        // we need a 2-digit region
-        if (JString::strlen($this->region) !== 2) {
-            $this->setError(JText::_('VALIDATION STATE REQUIRED'));
-            $error++;
-        }
-        // we need a 5 numeric digits starting from the left in out postcode
-        if (!is_numeric($this->postcode)) {
-            $this->setError(JText::_('VALIDATION ZIPCODE REQUIRED'));
-            $error++;
-        }
-        // if we have an email, we need a valid email
-        if ($this->email && !filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
-            $this->setError($this->email . JText::_('VALIDATION EMAIL INVALID'));
-            $error++;
-        }
-        if ($this->phone) {
-            // reject phone numbers with letters in them
-            if (!is_numeric($this->phone)) {
-                $this->setError(JText::_('VALIDATION PHONE NUMERIC'));
-                $error++;
-            }
-            // Phone numbers may be given with the leading '1' or not
-            if (JString::strlen($this->phone) !== 10) {
-                $this->setError(JText::_('VALIDATION PHONE LENGTH'));
-                $error++;
-            }
-        } else {
-            $this->setError(JText::_('VALIDATION PHONE EMPTY'));
-            $error++;
-        }
+		}
+		// we need a 2-digit region
+		if (JString::strlen($this->region) !== 2) {
+			$this->setError(JText::_('VALIDATION STATE REQUIRED'));
+			$error++;
+		}
+		// we need a 5 numeric digits starting from the left in out postcode
+		if (!is_numeric($this->postcode)) {
+			$this->setError(JText::_('VALIDATION ZIPCODE REQUIRED'));
+			$error++;
+		}
+		// if we have an email, we need a valid email
+		if ($this->email && !filter_var($this->email, FILTER_VALIDATE_EMAIL)) {
+			$this->setError($this->email . JText::_('VALIDATION EMAIL INVALID'));
+			$error++;
+		}
+		if ($this->phone) {
+
+		} else {
+			$this->setError(JText::_('VALIDATION PHONE EMPTY'));
+			$error++;
+		}
 */
