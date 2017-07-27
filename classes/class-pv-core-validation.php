@@ -123,11 +123,11 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 				// re-initialize $function.
 				$function = '';
 
-				if ( is_array( $process['validate'] ) && count( $process['validate'] ) ) {
+				if ( is_array( $process['validate'] ) ) {
 					// loop through assigned validation functions.
 					foreach ( $process['validate'] as $function ) {
 						if ( method_exists( $this, $function ) ) {
-							if ( ! $this->$function( $this->data[ $field ] ) ) {
+							if ( ! $this->$function( $this->data[ $field ] ) && $this->data[ $field ] ) {
 								$this->set_message( $process['label'] . ' failed validation: ' . $function );
 								$valid = false;
 								array_push( $invalidated, array( $field, $function ) );
