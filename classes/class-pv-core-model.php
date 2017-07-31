@@ -62,8 +62,11 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 
 			$this->pagination = ( object ) array(
 				'start' => ( isset( $_REQUEST['start'] ) ? ( int ) $_REQUEST['start'] : 0 ),
-				'range' => ( isset( $_REQUEST['range'] ) ? ( int ) $_REQUEST['range'] : 20 ),
-				'total' => '',
+				'range' => 20,
+				'first' => '',
+				'previous' => '',
+				'next' => '',
+				'last' => '',
 			);
 		}
 
@@ -113,6 +116,8 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 		 * @return     mixed    paged result rows
 		 */
 		public function get_pagination() {
+			$this->set_pagination();
+			
 			return $this->pagination;
 		}
 
@@ -209,5 +214,16 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 			return strtotime( $date . ' GMT' );
 		}
 
+		/**
+		 * Gets all rows.
+		 *
+		 * @return     mixed   all rows
+		 */
+		public function set_pagination() {
+			$sql = sprintf( ' SELECT * FROM `%s` WHERE %%s ', $this->dbase->prefix . $this->tablename );
+			$prepared_sql = $this->dbase->prepare( $sql, 1 );
+
+			dd($this->dbase);
+		}
 	}
 }
