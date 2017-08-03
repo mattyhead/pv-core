@@ -222,7 +222,7 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 			$pagination = array_merge( (array) $this->pagination, (array) ( $this->dbase->get_results( $prepared ) ) );
 
 
-			dd('blah1', $pagination);
+			dd('blah2', $pagination);
 		}
 	}
 }
