@@ -220,11 +220,12 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 			$prepared = $this->dbase->prepare( $sql, 1);
 
 			$pagination = array_merge( ( array ) $this->pagination, ( array ) $this->dbase->get_results( $prepared )[0] );
+
 			$temp = $pagination['range'] + $pagination['start'];
 			$pagination['next'] = $pagination['last'] > $temp ? $temp : false ;
 			$temp = ( -$pagination['range'] ) + $pagination['start'];
-			$pagination['previous'] = $pagination['last'] < $temp ? $temp : false ;
-
+			$pagination['previous'] = $pagination['first'] < $temp ? $temp : false ;
+			$pagination['first'] = $pagination['first'] == $pagination['start'] ? false : $pagination['first'];
 			$this->pagination = ( object ) $pagination;
 		}
 	}
