@@ -82,8 +82,8 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 				return false;
 			}
 			$sql = sprintf( ' SELECT * FROM `%s` WHERE `%s` = %%s ', $this->dbase->prefix . $this->tablename, $this->primary_key );
-			$prepared_sql = $this->dbase->prepare( $sql, ( int ) $value );
-			return $this->dbase->get_row( $prepared_sql );
+			$prepared = $this->dbase->prepare( $sql, ( int ) $value );
+			return $this->dbase->get_row( $prepared );
 		}
 
 		/**
@@ -93,9 +93,9 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 		 */
 		public function get_all() {
 			$sql = sprintf( ' SELECT * FROM `%s` WHERE %%s ', $this->dbase->prefix . $this->tablename );
-			$prepared_sql = $this->dbase->prepare( $sql, 1 );
+			$prepared = $this->dbase->prepare( $sql, 1 );
 
-			return $this->dbase->get_results( $prepared_sql );
+			return $this->dbase->get_results( $prepared );
 		}
 
 		/**
@@ -105,9 +105,9 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 		 */
 		public function get_paged() {
 			$sql = sprintf( ' SELECT * FROM `%s` LIMIT %%d, %%d ', $this->dbase->prefix . $this->tablename );
-			$prepare_sql = $this->dbase->prepare( $sql, $this->pagination->start, $this->pagination->range );
+			$prepared = $this->dbase->prepare( $sql, $this->pagination->start, $this->pagination->range );
 
-			return $this->dbase->get_results( $prepare_sql );
+			return $this->dbase->get_results( $prepared );
 		}
 
 		/**
@@ -119,6 +119,19 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 			$this->set_pagination();
 			
 			return $this->pagination;
+		}
+
+		/**
+		 * Gets paged results
+		 *
+		 * @return     mixed    paged result rows
+		 */
+		public function get_total() {
+			$sql = sprintf( ' SELECT COUNT(*) FROM `%s` WHERE %%d ', $this->dbase->prefix . $this->tablename );
+			$prepared = $this->dbase->prepare( $sql, 1);
+
+			dd( $this->dbase->num_rows, $this->dbase->get_var( $prepared ) )
+			return $this->dbase->get_var( $prepared );
 		}
 
 		/**
@@ -220,8 +233,9 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 		 * @return     mixed   all rows
 		 */
 		public function set_pagination() {
+			$this->get_total();
 			$sql = sprintf( ' SELECT * FROM `%s` WHERE %%s ', $this->dbase->prefix . $this->tablename );
-			$prepared_sql = $this->dbase->prepare( $sql, 1 );
+			$prepared = $this->dbase->prepare( $sql, 1 );
 
 			dd($this->dbase);
 		}
