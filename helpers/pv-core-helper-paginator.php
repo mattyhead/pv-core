@@ -53,7 +53,7 @@ if ( ! class_exists( 'Pv_Core_Helper_Paginator' ) ) {
 			$last = 'last&gt;&gt;';
 
 			$base_link = admin_url( 'admin.php?page=' . $this->plugin_name );
-
+d($this->pagination);
 			if ( isset( $this->pagination->first ) && ! $this->pagination->first === false ) {
 				$first = '<a href="' . esc_attr( $base_link . '&current=' . $this->pagination->first ) . '">' . $first . '</a>';
 			}
@@ -71,7 +71,7 @@ if ( ! class_exists( 'Pv_Core_Helper_Paginator' ) ) {
 			}
 
 			?>
-			<span class="row-actions visible">
+			<span class="row-actions visible left">
 				<span>[</span>
 				<span><?php echo $first ; ?></span>
 				<span>|</span>
