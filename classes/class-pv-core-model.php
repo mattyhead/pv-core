@@ -108,11 +108,13 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 			$pagination['previoius'] = $current == 1 ? false : $current - 1 ;
 			$pagination['next'] = $current == $last ? false : $current + 1 ;
 
+			$start = $current * $limit;
+
 			$this->pagination = ( object ) $pagination;
 
 			// results fetch.
 			$sql = sprintf( ' SELECT * FROM `%s` LIMIT %%d, %%d ', $this->dbase->prefix . $this->tablename );
-			$prepared = $this->dbase->prepare( $sql, $this->pagination->start, $this->pagination->range );
+			$prepared = $this->dbase->prepare( $sql, $start, $limit );
 
 			return $this->dbase->get_results( $prepared );
 		}
