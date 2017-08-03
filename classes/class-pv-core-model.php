@@ -63,10 +63,6 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 			$this->pagination = ( object ) array(
 				'start' => ( isset( $_REQUEST['start'] ) ? ( int ) $_REQUEST['start'] : 0 ),
 				'range' => 20,
-				'first' => '',
-				'previous' => '',
-				'next' => '',
-				'last' => '',
 			);
 		}
 
@@ -119,19 +115,6 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 			$this->set_pagination();
 			
 			return $this->pagination;
-		}
-
-		/**
-		 * Gets paged results
-		 *
-		 * @return     mixed    paged result rows
-		 */
-		public function get_total() {
-			$sql = sprintf( ' SELECT COUNT(*) FROM `%s` WHERE %%d ', $this->dbase->prefix . $this->tablename );
-			$prepared = $this->dbase->prepare( $sql, 1);
-
-			dd( $this->dbase->num_rows, $this->dbase->get_var( $prepared ) );
-			return $this->dbase->get_var( $prepared );
 		}
 
 		/**
@@ -233,11 +216,13 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 		 * @return     mixed   all rows
 		 */
 		public function set_pagination() {
-			$this->get_total();
-			$sql = sprintf( ' SELECT * FROM `%s` WHERE %%s ', $this->dbase->prefix . $this->tablename );
-			$prepared = $this->dbase->prepare( $sql, 1 );
+			$sql = sprintf( ' SELECT COUNT(`id`) AS `total`, MIN(`id`) AS `first`, MAX(`id`) AS `last` FROM  `%s` WHERE %%d ', $this->dbase->prefix . $this->tablename );
+			$prepared = $this->dbase->prepare( $sql, 1);
 
-			dd($this->dbase);
+			$pagination = array_merge( (array) $this->pagination, $this->dbase->get_results( $prepared ) );
+
+
+			dd($pagination);
 		}
 	}
 }
