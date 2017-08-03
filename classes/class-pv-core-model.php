@@ -221,24 +221,5 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 		public function date_to_time( $date ) {
 			return strtotime( $date . ' GMT' );
 		}
-
-		/**
-		 * Gets all rows.
-		 *
-		 * @return     mixed   all rows
-		 */
-		public function set_pagination() {
-			$sql = sprintf( ' SELECT COUNT(`id`) AS `total`, MIN(`id`) AS `first`, MAX(`id`) AS `last` FROM  `%s` WHERE %%d ', $this->dbase->prefix . $this->tablename );
-			$prepared = $this->dbase->prepare( $sql, 1);
-
-			$pagination = array_merge( ( array ) $this->pagination, ( array ) $this->dbase->get_results( $prepared )[0] );
-
-			$temp = $pagination['current'] + $pagination['start'];
-			$pagination['next'] = $pagination['last'] > $temp ? $temp : false ;
-			$temp = ( -$pagination['range'] ) + $pagination['start'];
-			$pagination['previous'] = $pagination['first'] < $temp ? $temp : false ;
-			$pagination['first'] = $pagination['first'] == $pagination['start'] ? false : $pagination['first'];
-			$this->pagination = ( object ) $pagination;
-		}
 	}
 }
