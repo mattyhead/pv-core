@@ -96,7 +96,7 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 		 */
 		public function get_paged() {
 			// pagination setup.
-			$page = isset( $_REQUEST['current'] ) ? ( int ) isset( $_REQUEST['current'] ) : 1 ;
+			$current = isset( $_REQUEST['current'] ) ? ( int ) isset( $_REQUEST['current'] ) : 1 ;
 			$limit = 10;
 
 			$sql = sprintf( ' SELECT COUNT(`id`) AS `total` FROM  `%s` WHERE %%d ', $this->dbase->prefix . $this->tablename );
