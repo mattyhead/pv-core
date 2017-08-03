@@ -122,11 +122,9 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 		}
 
 		/**
-		 * Gets paged results
-		 *
-		 * @return     mixed    paged result rows
+		 * Sets pagination
 		 */
-		public function get_pagination() {
+		public function set_pagination() {
 			// pagination setup.
 			$current = isset( $_REQUEST['current'] ) ? ( int ) $_REQUEST['current'] : 1 ;
 			$limit = 10;
