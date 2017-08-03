@@ -96,16 +96,16 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 		 */
 		public function get_paged() {
 			// pagination setup.
-			$current = isset( $_REQUEST['current'] ) ? ( int ) isset( $_REQUEST['current'] ) : 1 ;
-			$limit = 10;
+			$pagination['current'] = $current = isset( $_REQUEST['current'] ) ? ( int ) isset( $_REQUEST['current'] ) : 1 ;
+			$pagination['limit'] = $limit = 10;
 
 			$sql = sprintf( ' SELECT COUNT(`id`) AS `total` FROM  `%s` WHERE %%d ', $this->dbase->prefix . $this->tablename );
 			$prepared = $this->dbase->prepare( $sql, 1);
-			$total = $this->dbase->get_var( $prepared );
+			$pagination['total'] = $total = $this->dbase->get_var( $prepared );
 			$last = ceil( $total / $limit );
 			$pagination['last'] = $current == $last ? false : $last ;
 			$pagination['first'] = $current == 1 ? false : 1 ;
-			$pagination['previoius'] = $current == 1 ? false : $current - 1 ;
+			$pagination['previous'] = $current == 1 ? false : $current - 1 ;
 			$pagination['next'] = $current == $last ? false : $current + 1 ;
 
 			$start = ( $current - 1 ) * $limit;
