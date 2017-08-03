@@ -127,11 +127,11 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 		public function set_pagination() {
 			// pagination setup.
 			$current = isset( $_REQUEST['current'] ) ? ( int ) $_REQUEST['current'] : 1 ;
-			$pagination['limit'] = 10;
+			$pagination['limit'] = $limit = 10;
 
 			$sql = sprintf( ' SELECT COUNT(`id`) AS `total` FROM  `%s` WHERE %%d ', $this->dbase->prefix . $this->tablename );
 			$prepared = $this->dbase->prepare( $sql, 1);
-			$pagination['total'] = $total = $this->dbase->get_var( $prepared );
+			$total = $this->dbase->get_var( $prepared );
 			$last = ceil( $total / $limit );
 			$pagination['last'] = $current == $last ? false : $last ;
 			$pagination['first'] = $current == 1 ? false : 1 ;
