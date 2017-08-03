@@ -59,11 +59,6 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 			global $wpdb;
 
 			$this->dbase = &$wpdb;
-
-			$this->pagination = ( object ) array(
-				'start' => ( isset( $_REQUEST['start'] ) ? ( int ) $_REQUEST['start'] : 0 ),
-				'range' => 10,
-			);
 		}
 
 		/**
@@ -100,6 +95,22 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 		 * @return     mixed    paged result rows
 		 */
 		public function get_paged() {
+			// pagination setup.
+			$page = isset( $_REQUEST['current'] ) ? ( int ) isset( $_REQUEST['current'] ) : 1 ;
+			$limit = 10;
+
+			$sql = sprintf( ' SELECT COUNT(`id`) AS `total` FROM  `%s` WHERE %%d ', $this->dbase->prefix . $this->tablename );
+			$prepared = $this->dbase->prepare( $sql, 1);
+			$total = $this->dbase->get_var( $prepared );
+			$last = ceil( $total / $limit );
+			$pagination['last'] = $current == $last ? false : $last ;
+			$pagination['first'] = $current == 1 ? false : 1 ;
+			$pagination['previoius'] = $current == 1 ? false : $current - 1 ;
+			$pagination['next'] = $current == $last ? false : $current + 1 ;
+
+			$this->pagination = ( object ) $pagination;
+
+			// results fetch.
 			$sql = sprintf( ' SELECT * FROM `%s` LIMIT %%d, %%d ', $this->dbase->prefix . $this->tablename );
 			$prepared = $this->dbase->prepare( $sql, $this->pagination->start, $this->pagination->range );
 
@@ -112,7 +123,6 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 		 * @return     mixed    paged result rows
 		 */
 		public function get_pagination() {
-			$this->set_pagination();
 			
 			return $this->pagination;
 		}
@@ -221,7 +231,7 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 
 			$pagination = array_merge( ( array ) $this->pagination, ( array ) $this->dbase->get_results( $prepared )[0] );
 
-			$temp = $pagination['range'] + $pagination['start'];
+			$temp = $pagination['current'] + $pagination['start'];
 			$pagination['next'] = $pagination['last'] > $temp ? $temp : false ;
 			$temp = ( -$pagination['range'] ) + $pagination['start'];
 			$pagination['previous'] = $pagination['first'] < $temp ? $temp : false ;
