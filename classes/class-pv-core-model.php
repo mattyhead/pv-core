@@ -62,7 +62,7 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 
 			$this->pagination = ( object ) array(
 				'start' => ( isset( $_REQUEST['start'] ) ? ( int ) $_REQUEST['start'] : 0 ),
-				'range' => 20,
+				'range' => 10,
 			);
 		}
 
