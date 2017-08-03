@@ -72,13 +72,13 @@ if ( ! class_exists( 'Pv_Core_Helper_Paginator' ) ) {
 
 			?>
 			<span class="row-actions visible">
-				<span><?php echo esc_html( $first ); ?></span>
+				<span><?php echo $first ; ?></span>
 				<span>|</span>
-				<span><?php echo esc_html( $previous ); ?></span>
+				<span><?php echo $previous ; ?></span>
 				<span>|</span>
-				<span><?php echo esc_html( $next ); ?></span>
+				<span><?php echo $next ; ?></span>
 				<span>|</span>
-				<span><?php echo esc_html( $last ); ?></span>
+				<span><?php echo $last ; ?></span>
 			</span>
 			<?php
 		}
