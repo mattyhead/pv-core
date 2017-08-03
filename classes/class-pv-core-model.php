@@ -130,7 +130,7 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 			$sql = sprintf( ' SELECT COUNT(*) FROM `%s` WHERE %%d ', $this->dbase->prefix . $this->tablename );
 			$prepared = $this->dbase->prepare( $sql, 1);
 
-			dd( $this->dbase->num_rows, $this->dbase->get_var( $prepared ) )
+			dd( $this->dbase->num_rows, $this->dbase->get_var( $prepared ) );
 			return $this->dbase->get_var( $prepared );
 		}
 
