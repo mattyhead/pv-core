@@ -54,19 +54,19 @@ if ( ! class_exists( 'Pv_Core_Helper_Paginator' ) ) {
 
 			$base_link = admin_url( 'admin.php?page=' . $this->plugin_name );
 
-			if ( isset( $this->pagination->first ) && $this->pagination->first ) {
+			if ( isset( $this->pagination->first ) && ! $this->pagination->first === false ) {
 				$first = '<a href="' . esc_attr( $base_link . '&current=' . $this->pagination->first ) . '">' . $first . '</a>';
 			}
 
-			if ( isset( $this->pagination->previous ) && $this->pagination->previous ) {
+			if ( isset( $this->pagination->previous ) && ! $this->pagination->previous === false ) {
 				$previous = '<a href="' . esc_attr( $base_link . '&current=' . $this->pagination->previous ) . '">' . $previous . '</a>';
 			}
 
-			if ( isset( $this->pagination->next ) && $this->pagination->next ) {
+			if ( isset( $this->pagination->next ) && ! $this->pagination->next === false ) {
 				$next = '<a href="' . esc_attr( $base_link . '&current=' . $this->pagination->next ) . '">' . $next . '</a>';
 			}
 
-			if ( isset( $this->pagination->last ) && $this->pagination->last ) {
+			if ( isset( $this->pagination->last ) && ! $this->pagination->last === false ) {
 				$last = '<a href="' . esc_attr( $base_link . '&current=' . $this->pagination->last ) . '">' . $last . '</a>';
 			}
 
