@@ -95,6 +95,38 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 		 * @return     mixed    paged result rows
 		 */
 		public function get_paged() {
+			// Set pagination property.
+			if ( ! $this->pagination ) {
+				$this->set_pagination();
+			}
+
+			// Get results based on pagination property.
+			$sql = sprintf( ' SELECT * FROM `%s` LIMIT %%d, %%d ', $this->dbase->prefix . $this->tablename );
+			$prepared = $this->dbase->prepare( $sql, $this->pagination->start, $this->pagination->limit );
+
+			return $this->dbase->get_results( $prepared );
+		}
+
+		/**
+		 * Gets paged results
+		 *
+		 * @return     mixed    paged result rows
+		 */
+		public function get_pagination() {
+			// Set pagination property.
+			if ( ! $this->pagination ) {
+				$this->set_pagination();
+			}
+			
+			return $this->pagination;
+		}
+
+		/**
+		 * Gets paged results
+		 *
+		 * @return     mixed    paged result rows
+		 */
+		public function get_pagination() {
 			// pagination setup.
 			$current = isset( $_REQUEST['current'] ) ? ( int ) $_REQUEST['current'] : 1 ;
 			$limit = 10;
@@ -107,28 +139,11 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 			$pagination['first'] = $current == 1 ? false : 1 ;
 			$pagination['previous'] = $current == 1 ? false : $current - 1 ;
 			$pagination['next'] = $current == $last ? false : $current + 1 ;
-
 			$start = ( $current - 1 ) * $limit;
 
+			// assign pagination.
 			$this->pagination = ( object ) $pagination;
-
-			// results fetch.
-			$sql = sprintf( ' SELECT * FROM `%s` LIMIT %%d, %%d ', $this->dbase->prefix . $this->tablename );
-			$prepared = $this->dbase->prepare( $sql, $start, $limit );
-
-			return $this->dbase->get_results( $prepared );
 		}
-
-		/**
-		 * Gets paged results
-		 *
-		 * @return     mixed    paged result rows
-		 */
-		public function get_pagination() {
-			
-			return $this->pagination;
-		}
-
 		/**
 		 * Insert a row
 		 *
