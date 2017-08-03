@@ -219,10 +219,10 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 			$sql = sprintf( ' SELECT COUNT(`id`) AS `total`, MIN(`id`) AS `first`, MAX(`id`) AS `last` FROM  `%s` WHERE %%d ', $this->dbase->prefix . $this->tablename );
 			$prepared = $this->dbase->prepare( $sql, 1);
 
-			$pagination = array_merge( (array) $this->pagination, (array) ( $this->dbase->get_results( $prepared ) ) );
+			$pagination = array_merge( (array) $this->pagination, (array) $this->dbase->get_results( $prepared )[0] );
 
 
-			dd('blah2', $pagination);
+			dd('blah3', $pagination);
 		}
 	}
 }
