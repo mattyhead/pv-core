@@ -131,13 +131,13 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 
 			$sql = sprintf( ' SELECT COUNT(`id`) AS `total` FROM  `%s` WHERE %%d ', $this->dbase->prefix . $this->tablename );
 			$prepared = $this->dbase->prepare( $sql, 1);
-			$total = $this->dbase->get_var( $prepared );
+			$pagination['total'] = $total = $this->dbase->get_var( $prepared );
 			$last = ceil( $total / $limit );
 			$pagination['last'] = $current == $last ? false : $last ;
 			$pagination['first'] = $current == 1 ? false : 1 ;
 			$pagination['previous'] = $current == 1 ? false : $current - 1 ;
 			$pagination['next'] = $current == $last ? false : $current + 1 ;
-			$start = ( $current - 1 ) * $limit;
+			$pagination['start'] = ( $current - 1 ) * $limit;
 
 			// assign pagination.
 			$this->pagination = ( object ) $pagination;
