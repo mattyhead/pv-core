@@ -224,8 +224,6 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 			$pagination['next'] = $pagination['last'] > $temp ? $temp : false ;
 			$temp = ( -$pagination['range'] ) + $pagination['start'];
 			$pagination['previous'] = $pagination['last'] < $temp ? $temp : false ;
-
-			dd('blah3', $pagination);
 		}
 	}
 }
