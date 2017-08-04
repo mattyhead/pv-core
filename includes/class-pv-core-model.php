@@ -64,9 +64,9 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 		/**
 		 * Gets a row.
 		 *
-		 * @param      int $value   (an ID).
+		 * @param      int $value  (an ID).
 		 *
-		 * @return     mixed    result row
+		 * @return     mixed result row
 		 */
 		public function get_row( $value ) {
 			if ( ! (int) $value ) {
@@ -80,7 +80,7 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 		/**
 		 * Gets all rows.
 		 *
-		 * @return     mixed   all rows
+		 * @return     mixed  all rows
 		 */
 		public function get_all() {
 			$sql = sprintf( ' SELECT * FROM `%s` WHERE %%s ', $this->dbase->prefix . $this->tablename );
@@ -92,7 +92,7 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 		/**
 		 * Gets paged results
 		 *
-		 * @return     mixed    paged result rows
+		 * @return     mixed paged result rows
 		 */
 		public function get_paged() {
 			// Set pagination property.
@@ -110,7 +110,7 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 		/**
 		 * Gets paged results
 		 *
-		 * @return     mixed    paged result rows
+		 * @return     mixed paged result rows
 		 */
 		public function get_pagination() {
 			// Set pagination property.
@@ -122,30 +122,46 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 		}
 
 		/**
+		 * Gets the total.
+		 *
+		 * @return     int  The total.
+		 */
+		public function get_total() {
+			$sql = sprintf( ' SELECT COUNT(`id`) AS `total` FROM  `%s` WHERE %%d ', $this->dbase->prefix . $this->tablename );
+			$prepared = $this->dbase->prepare( $sql, 1 );
+
+			return $this->dbase->get_var( $prepared );
+		}
+
+		/**
 		 * Sets pagination
 		 */
 		public function set_pagination() {
 			// pagination setup.
 			$current = isset( $_REQUEST['current'] ) ? (int) $_REQUEST['current'] : 1 ;
-			$pagination['limit'] = $limit = 10;
+			$limit = 10;
 
-			$sql = sprintf( ' SELECT COUNT(`id`) AS `total` FROM  `%s` WHERE %%d ', $this->dbase->prefix . $this->tablename );
-			$prepared = $this->dbase->prepare( $sql, 1 );
-			$total = $this->dbase->get_var( $prepared );
+			$total = $this->get_total();
 			$last = ceil( $total / $limit );
+
 			$pagination['last'] = $current == $last ? false : $last ;
-			$pagination['first'] = $current == 1 ? false : 1 ;
-			$pagination['previous'] = $current == 1 ? false : $current - 1 ;
+			$pagination['first'] = 1 == $current ? false : 1 ;
+			$pagination['previous'] = 1 == $current ? false : $current - 1 ;
 			$pagination['next'] = $current == $last ? false : $current + 1 ;
 			$pagination['start'] = ( $current - 1 ) * $limit;
+			$pagination['limit'] = $limit;
+			$pagination['current'] = $current;
 
 			// assign pagination.
 			$this->pagination = (object) $pagination;
 		}
+
 		/**
 		 * Insert a row
 		 *
 		 * @param      mixed $data   The data.
+		 *
+		 * @return     <type>  ( description_of_the_return_value )
 		 */
 		public function insert( &$data ) {
 
@@ -159,7 +175,7 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 		 * @param      mixed $data   The data.
 		 * @param      array $where  The where.
 		 *
-		 * @return     bool  result of the update query.
+		 * @return     bool   result of the update query.
 		 */
 		public function update( &$data, $where = null ) {
 
