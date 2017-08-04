@@ -1,6 +1,6 @@
 <?php
 /**
- * Shared html helper class
+ * Shared select helper class
  *
  * @link       philadelphiavotes.com
  * @since      1.0.0
@@ -43,11 +43,10 @@
 
 if ( ! class_exists( 'Pv_Core_Helper_Select' ) ) {
 	/**
-	 * HTMLSelectList Class for PHP5
-	 * creates SELECT dropdown tag HTML
+	 * HTMLSelectList Class for PHP5 creates SELECT dropdown tag HTML
 	 *
-	 * @version 1.1
-	 * @author Jeff L. Williams - later mangled by Matthew Murphy
+	 * @version    1.1:
+	 * @author     Jeff L. Williams - later mangled by Matthew Murphy
 	 */
 	class Pv_Core_Helper_Select {
 
@@ -103,10 +102,12 @@ if ( ! class_exists( 'Pv_Core_Helper_Select' ) ) {
 		/**
 		 * Constructor: Sets parameters for the class on create
 		 *
-		 * @param String  $select_name the name of the select.
-		 * @param String  $selected 'display' of the selected option.
-		 * @param Integer $select_size the numbers of rows for the select.
-		 * @param String  $optional_attrs additional tag information.
+		 * @param      String   $select_name     the name of the select.
+		 * @param      String   $selected        'display' of the selected
+		 *                                       option.
+		 * @param      Integer  $select_size     the numbers of rows for the
+		 *                                       select.
+		 * @param      String   $optional_attrs  additional tag information.
 		 */
 		public function setup( $select_name, $selected, $select_size = 0, $optional_attrs = '' ) {
 			$this->selected = $selected;
@@ -119,10 +120,11 @@ if ( ! class_exists( 'Pv_Core_Helper_Select' ) ) {
 		/**
 		 * Adds an item and its value to the list
 		 *
-		 * @param String  $item_display the text to display in an item.
-		 * @param String  $item_value the value to send on form submit.
-		 * @param Boolean $selected true if this item is the default.
-		 * @return Integer the item index.
+		 * @param      String   $item_display  the text to display in an item.
+		 * @param      String   $item_value    the value to send on form submit.
+		 * @param      Boolean  $selected      true if this item is the default.
+		 *
+		 * @return     Integer  the item index.
 		 */
 		public function add_item( $item_display, $item_value, $selected = false ) {
 			$this->item_array[ $this->item_count ][0] = $item_display;
@@ -139,7 +141,7 @@ if ( ! class_exists( 'Pv_Core_Helper_Select' ) ) {
 		/**
 		 * Adds an item and its value to the list
 		 *
-		 * @param  String $items_array the text to display in an item.
+		 * @param      String  $items_array  the text to display in an item.
 		 */
 		public function add_items( $items_array ) {
 			foreach ( $items_array as $item ) {
@@ -150,18 +152,18 @@ if ( ! class_exists( 'Pv_Core_Helper_Select' ) ) {
 		/**
 		 * Returns the count of list items
 		 *
-		 * @return Integer
+		 * @return     Integer
 		 */
 		public function item_count() {
 			return $this->item_count;
 		}
 
 		/**
-		 * Selects an item in the list based on the value
-		 * and makes it the default selected item
+		 * Selects an item in the list based on the value and makes it the
+		 * default selected item
 		 *
-		 * @param String  $value The value.
-		 * @param Boolean $ignore_case (optional).
+		 * @param      String   $value        The value.
+		 * @param      Boolean  $ignore_case  (optional).
 		 */
 		public function select_item_by_value( $value, $ignore_case = false ) {
 			if ( $ignore_case ) {
@@ -182,11 +184,11 @@ if ( ! class_exists( 'Pv_Core_Helper_Select' ) ) {
 		}
 
 		/**
-		 * Selects an item in the list based on the display
-		 * and makes it the default selected item
+		 * Selects an item in the list based on the display and makes it the
+		 * default selected item
 		 *
-		 * @param String  $display  value.
-		 * @param Boolean $ignore_case (optional).
+		 * @param      String   $display      value.
+		 * @param      Boolean  $ignore_case  (optional).
 		 */
 		public function select_item_by_display( $display, $ignore_case = false ) {
 			if ( $ignore_case ) {
@@ -209,7 +211,7 @@ if ( ! class_exists( 'Pv_Core_Helper_Select' ) ) {
 		/**
 		 * Returns HTML code for a SELECT list control
 		 *
-		 * @return String
+		 * @return     String
 		 */
 		public function get_html() {
 
@@ -251,7 +253,7 @@ if ( ! class_exists( 'Pv_Core_Helper_Select' ) ) {
 		/**
 		 * Gets the combo data.
 		 *
-		 * @param      String $prop_name  The property name.
+		 * @param      String  $prop_name  The property name.
 		 */
 		public function get_combo_data( $prop_name ) {
 			require_once WP_PLUGIN_DIR . '/pv-core/classes/class-pv-core-combo-data.php';

@@ -1,7 +1,30 @@
 <?php
+/**
+ * Shared html helper class
+ *
+ * @link       philadelphiavotes.com
+ * @since      1.0.0
+ *
+ * @package    Pv_Core
+ * @subpackage Pv_Core/helpers
+ * @author     matthew murphy <matthew.e.murphy@phila.gov>
+ */
 
-class Pv_Core_Html_Helper extends Pv_Core_Helper {
+if ( ! class_exists( 'Pv_Core_Helper_Html' ) ) {
+	/**
+	 * Class for pv core paginator helper.
+	 */
+class Pv_Core_Helper_Html extends Pv_Core_Helper {
 
+	/**
+	 * { function_description }
+	 *
+	 * @param      string  $text     The text
+	 * @param      <type>  $url      The url
+	 * @param      array   $options  The options
+	 *
+	 * @return     string  ( description_of_the_return_value )
+	 */
 	public static function link( $text, $url, $options = array() ) {
 		if ( is_array( $url ) ) {
 			$url = MvcRouter::public_url( $url );
@@ -16,6 +39,14 @@ class Pv_Core_Html_Helper extends Pv_Core_Helper {
 		return $html;
 	}
 
+	/**
+	 * { function_description }
+	 *
+	 * @param      <type>  $object   The object
+	 * @param      array   $options  The options
+	 *
+	 * @return     <type>  ( description_of_the_return_value )
+	 */
 	public static function object_url( $object, $options = array() ) {
 		$defaults = array(
 			'id' => $object->__id,
@@ -27,12 +58,28 @@ class Pv_Core_Html_Helper extends Pv_Core_Helper {
 		return $url;
 	}
 
+	/**
+	 * { function_description }
+	 *
+	 * @param      <type>  $object   The object
+	 * @param      array   $options  The options
+	 *
+	 * @return     <type>  ( description_of_the_return_value )
+	 */
 	public static function object_link( $object, $options = array() ) {
 		$url = self::object_url( $object, $options );
 		$text = empty( $options['text'] ) ? $object->__name : $options['text'];
 		return self::link( $text, $url, $options );
 	}
 
+	/**
+	 * { function_description }
+	 *
+	 * @param      <type>  $object   The object
+	 * @param      array   $options  The options
+	 *
+	 * @return     <type>  ( description_of_the_return_value )
+	 */
 	public static function admin_object_url( $object, $options = array() ) {
 		$defaults = array(
 			'id' => $object->__id,
@@ -43,12 +90,28 @@ class Pv_Core_Html_Helper extends Pv_Core_Helper {
 		return $url;
 	}
 
+	/**
+	 * { function_description }
+	 *
+	 * @param      <type>  $object   The object
+	 * @param      array   $options  The options
+	 *
+	 * @return     <type>  ( description_of_the_return_value )
+	 */
 	public static function admin_object_link( $object, $options = array() ) {
 		$url = self::admin_object_url( $object, $options );
 		$text = empty( $options['text'] ) ? $object->__name : $options['text'];
 		return self::link( $text, $url );
 	}
 
+	/**
+	 * { function_description }
+	 *
+	 * @param      <type>  $method  The method
+	 * @param      <type>  $args    The arguments
+	 *
+	 * @return     <type>  ( description_of_the_return_value )
+	 */
 	public function __call( $method, $args ) {
 		if ( property_exists( $this, $method ) ) {
 			if ( is_callable( $this->$method ) ) {
