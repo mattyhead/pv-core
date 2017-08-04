@@ -59,6 +59,7 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 			global $wpdb;
 
 			$this->dbase = &$wpdb;
+			$this->set_pagination();
 		}
 
 		/**
