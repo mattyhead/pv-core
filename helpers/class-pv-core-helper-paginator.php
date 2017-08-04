@@ -71,8 +71,7 @@ if ( ! class_exists( 'Pv_Core_Helper_Paginator' ) ) {
 			}
 
 			?>
-			<span class="row-actions visible col-left">
-				<span>[</span>
+			<div class="row-actions visible col-left">
 				<span><?php echo $first ; ?></span>
 				<span>|</span>
 				<span><?php echo $previous ; ?></span>
@@ -80,8 +79,7 @@ if ( ! class_exists( 'Pv_Core_Helper_Paginator' ) ) {
 				<span><?php echo $next ; ?></span>
 				<span>|</span>
 				<span><?php echo $last ; ?></span>
-				<span>]</span>
-			</span>
+			</div>
 			<?php
 		}
 	}
