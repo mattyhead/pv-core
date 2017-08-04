@@ -33,8 +33,8 @@ if ( ! class_exists( 'Pv_Core_Helper_Paginator' ) ) {
 		/**
 		 * Constructor
 		 *
-		 * @param      mixed  $plugin_name  Plugin name.
-		 * @param      mixed  $pagination   The pagination.
+		 * @param  mixed $plugin_name  Plugin name.
+		 * @param  mixed $pagination   The pagination.
 		 */
 		public function setup( $plugin_name, $pagination ) {
 
@@ -71,7 +71,6 @@ if ( ! class_exists( 'Pv_Core_Helper_Paginator' ) ) {
 			}
 
 			?>
-			<div class="row-actions visible col-left">
 				<span><?php echo $first ; ?></span>
 				<span>|</span>
 				<span><?php echo $previous ; ?></span>
@@ -79,7 +78,6 @@ if ( ! class_exists( 'Pv_Core_Helper_Paginator' ) ) {
 				<span><?php echo $next ; ?></span>
 				<span>|</span>
 				<span><?php echo $last ; ?></span>
-			</div>
 			<?php
 		}
 	}
