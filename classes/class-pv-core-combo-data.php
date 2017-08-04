@@ -27,7 +27,7 @@ if ( ! class_exists( 'Pv_Core_Combo_Data' ) ) {
 			'3' => 'cell',
 			'4' => 'fax',
 			'5' => 'pager',
-		 );
+		);
 
 		/**
 		 * Phone functions by an arbitrary index.
@@ -37,7 +37,7 @@ if ( ! class_exists( 'Pv_Core_Combo_Data' ) ) {
 		public static $phone_type_short = array(
 			'1' => 'home',
 			'2' => 'cell',
-		 );
+		);
 
 		/**
 		 * Prefixes by an arbitrary index ( with null element ).
@@ -52,7 +52,7 @@ if ( ! class_exists( 'Pv_Core_Combo_Data' ) ) {
 			'5' => 'Miss',
 			'6' => 'Mx',
 			'7' => 'Dr',
-		 );
+		);
 
 		/**
 		 * Genders ( dupes OK ) indexed by conclusive prefix.
@@ -65,7 +65,7 @@ if ( ! class_exists( 'Pv_Core_Combo_Data' ) ) {
 			'Miss' => 'F',
 			'Mrs'  => 'F',
 			'Mx'   => 'N',
-		 );
+		);
 
 		/**
 		 * Marital statuses indexed by conclusive prefix.
@@ -75,7 +75,7 @@ if ( ! class_exists( 'Pv_Core_Combo_Data' ) ) {
 		public static $prefix_marital = array(
 			'Miss' => 'S',
 			'Mrs'  => 'M',
-		 );
+		);
 
 		/**
 		 * States indexed by abbreviations.
@@ -142,7 +142,7 @@ if ( ! class_exists( 'Pv_Core_Combo_Data' ) ) {
 			'WV' => 'West Virginia',
 			'WI' => 'Wisconsin',
 			'WY' => 'Wyoming',
-		 );
+		);
 
 		/**
 		 * Suffixes by an arbitrary index.
@@ -156,7 +156,7 @@ if ( ! class_exists( 'Pv_Core_Combo_Data' ) ) {
 			'4' => 'II',
 			'5' => 'III',
 			'6' => 'Esq',
-		 );
+		);
 
 		/**
 		 * Forms property ( an indexed array ) into something
@@ -168,7 +168,10 @@ if ( ! class_exists( 'Pv_Core_Combo_Data' ) ) {
 		 */
 		public static function set_combo_data( $array ) {
 			foreach ( $array as $idx => $value ) {
-				$return[] = ( object ) array( 'idx' => $idx, 'value' => $value );
+				$return[] = (object) array(
+					'idx' => $idx,
+					'value' => $value,
+				);
 			}
 
 			return $return;
@@ -233,7 +236,7 @@ if ( ! class_exists( 'Pv_Core_Combo_Data' ) ) {
 				$tmp[] = $first;
 			}
 			foreach ( $object as $item ) {
-				$tmp[ $item->$key ] = ( string ) $item->$value;
+				$tmp[ $item->$key ] = (string) $item->$value;
 			}
 
 			return self::set_combo_data( $tmp );

@@ -226,7 +226,8 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 		 * @return     mixed  a less whitespacey $data array
 		 */
 		public function scrub( $data ) {
-			array_walk( $data,
+			array_walk(
+				$data,
 				function ( &$value ) {
 					$value = trim( $value );
 					$value = preg_replace( '!\s+!', ' ', $value );

@@ -69,11 +69,11 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 		 * @return     mixed    result row
 		 */
 		public function get_row( $value ) {
-			if ( ! ( int ) $value ) {
+			if ( ! (int) $value ) {
 				return false;
 			}
 			$sql = sprintf( ' SELECT * FROM `%s` WHERE `%s` = %%s ', $this->dbase->prefix . $this->tablename, $this->primary_key );
-			$prepared = $this->dbase->prepare( $sql, ( int ) $value );
+			$prepared = $this->dbase->prepare( $sql, (int) $value );
 			return $this->dbase->get_row( $prepared );
 		}
 
@@ -117,7 +117,7 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 			if ( ! $this->pagination ) {
 				$this->set_pagination();
 			}
-			
+
 			return $this->pagination;
 		}
 
@@ -126,11 +126,11 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 		 */
 		public function set_pagination() {
 			// pagination setup.
-			$current = isset( $_REQUEST['current'] ) ? ( int ) $_REQUEST['current'] : 1 ;
+			$current = isset( $_REQUEST['current'] ) ? (int) $_REQUEST['current'] : 1 ;
 			$pagination['limit'] = $limit = 10;
 
 			$sql = sprintf( ' SELECT COUNT(`id`) AS `total` FROM  `%s` WHERE %%d ', $this->dbase->prefix . $this->tablename );
-			$prepared = $this->dbase->prepare( $sql, 1);
+			$prepared = $this->dbase->prepare( $sql, 1 );
 			$total = $this->dbase->get_var( $prepared );
 			$last = ceil( $total / $limit );
 			$pagination['last'] = $current == $last ? false : $last ;
@@ -140,7 +140,7 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 			$pagination['start'] = ( $current - 1 ) * $limit;
 
 			// assign pagination.
-			$this->pagination = ( object ) $pagination;
+			$this->pagination = (object) $pagination;
 		}
 		/**
 		 * Insert a row
@@ -176,7 +176,7 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 		 * @return     bool  result of delete query.
 		 */
 		public function delete( $value ) {
-			if ( ! ( int ) $value ) {
+			if ( ! (int) $value ) {
 				return false;
 			}
 

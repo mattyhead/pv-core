@@ -95,16 +95,16 @@ if ( ! class_exists( 'Pv_Core_Messaging' ) ) {
 				switch ( $_REQUEST['pvstatus'] ) {
 					case 'error':
 						add_action( 'admin_notices', array( $this, 'error' ), 10, 0 );
-					break;
+						break;
 					case 'info':
 						add_action( 'admin_notices', array( $this, 'info' ), 10, 0 );
-					break;
+						break;
 					case 'success':
 						add_action( 'admin_notices', array( $this, 'success' ), 10, 0 );
-					break;
+						break;
 					case 'warning':
 						add_action( 'admin_notices', array( $this, 'warning' ), 10, 0 );
-					break;
+						break;
 				}
 			}
 

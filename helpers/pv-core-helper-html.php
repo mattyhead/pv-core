@@ -110,7 +110,7 @@ if ( ! class_exists( 'Pv_Core_Helper_Html' ) ) {
 							$html_return .= $attribute . '= "';
 							if ( ! is_array( $val ) ) {
 								$html_return .= $val . '" ';
-							} else if ( is_array( $val ) ) {
+							} elseif ( is_array( $val ) ) {
 								foreach ( $val as $attr ) {
 									$html_return .= $attr . ' ';
 								}
@@ -200,7 +200,7 @@ if ( ! class_exists( 'Pv_Core_Helper_Html' ) ) {
 
 					array_push( $node['children'], $arr_prop[0] );
 
-				} else if ( isset( $node['children'] ) && $node['children'] ) {
+				} elseif ( isset( $node['children'] ) && $node['children'] ) {
 					$node['children'] = $this->build_tree( $arr_prop[0], $node['children'] );
 				}
 			}
