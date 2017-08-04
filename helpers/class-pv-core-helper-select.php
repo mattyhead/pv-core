@@ -256,7 +256,7 @@ if ( ! class_exists( 'Pv_Core_Helper_Select' ) ) {
 		 * @param      String  $prop_name  The property name.
 		 */
 		public function get_combo_data( $prop_name ) {
-			require_once WP_PLUGIN_DIR . '/pv-core/classes/class-pv-core-combo-data.php';
+			require_once WP_PLUGIN_DIR . '/pv-core/includes/class-pv-core-combo-data.php';
 
 			$this->add_items( Pv_Core_Combo_Data::gets( $prop_name ) );
 		}
