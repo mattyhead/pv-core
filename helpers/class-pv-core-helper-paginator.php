@@ -31,13 +31,21 @@ if ( ! class_exists( 'Pv_Core_Helper_Paginator' ) ) {
 		protected $plugin_name;
 
 		/**
+		 * Plugin name
+		 *
+		 * @var mixed $plugin_name
+		 */
+		protected $exportable;
+
+		/**
 		 * Constructor
 		 *
 		 * @param  mixed $plugin_name  Plugin name.
 		 * @param  mixed $pagination   The pagination.
 		 */
-		public function setup( $plugin_name, $pagination ) {
+		public function setup( $plugin_name, $pagination, $exportable = false ) {
 
+			$this->exportable = $exportable;
 			$this->pagination = $pagination;
 			$this->plugin_name = $plugin_name;
 		}
