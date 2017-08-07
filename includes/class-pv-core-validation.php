@@ -249,6 +249,17 @@ if ( ! class_exists( 'Pv_Core_Validation' ) ) {
 		}
 
 		/**
+		 * Shim for WP sanitize_key()
+		 *
+		 * @param      string $value  probably a nonce.
+		 *
+		 * @return     string  probably a sanitized nonce
+		 */
+		public function sanitize_key( $value ) {
+			return sanitize_key( $value );
+		}
+
+		/**
 		 * Sanitize 'phone'/'fax' inputs
 		 *
 		 * @param      string $value a possible phone number.
