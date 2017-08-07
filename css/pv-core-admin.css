@@ -1,3 +1,6 @@
 .fixed .column-id {
 	width: 3.5%;
 }
+.aligncenter {
+	float: center;
+}
