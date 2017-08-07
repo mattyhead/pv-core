@@ -43,9 +43,11 @@ if ( ! class_exists( 'Pv_Core_Helper_Paginator' ) ) {
 		 * @param  mixed $plugin_name  Plugin name.
 		 * @param  mixed $pagination   The pagination.
 		 * @param  mixed $exportable  Plugin name.
+		 * @param  mixed $deletable  Plugin name.
 		 */
-		public function setup( $plugin_name, $pagination, $exportable = false ) {
+		public function setup( $plugin_name, $pagination, $exportable = false, $deletable = false ) {
 
+			$this->deletable = $deletable;
 			$this->exportable = $exportable;
 			$this->pagination = $pagination;
 			$this->plugin_name = $plugin_name;
@@ -92,9 +94,23 @@ if ( ! class_exists( 'Pv_Core_Helper_Paginator' ) ) {
 					<span><?php echo $last ; ?></span>
 				</span>
 				<span class="alignright row-actions visible">
-					<span><a target="_blank" href="<?php echo esc_attr( WP_PLUGIN_URL . '/' . $this->plugin_name . '/admin/export.php?' . '&current=' . $this->pagination->current . '&_wpnonce=' . wp_create_nonce( 'pv_admin_export' ) ); ?>" >export all</a></span>
+					<?php
+					if ( $this->exportable ) :
+					?>
+					<span><a target="_blank" href="<?php echo esc_attr( WP_PLUGIN_URL . '/' . $this->plugin_name . '/admin/export.php?&current=' . $this->pagination->current . '&_wpnonce=' . wp_create_nonce( 'pv_admin_export' ) ); ?>" >export all</a></span>
+					<?php
+					endif;
+					if ( $this->exportable && $this->deletable ) :
+					?>
 					<span>|</span>
-					<span class="trash"><a href="<?php echo esc_attr( admin_url( 'admin-post.php?action=pvmi_admin_delete_all' . '&current=' . $this->pagination->current . '&_wpnonce=' . wp_create_nonce( $this->plugin_name . '_admin_delete_all' ) ) ); ?>" >delete all</a></span>
+					<?php
+					endif;
+					if ( $this->deletable ) :
+					?>
+					<span class="trash"><a href="<?php echo esc_attr( admin_url( 'admin-post.php?action=pvmi_admin_delete_all&current=' . $this->pagination->current . '&_wpnonce=' . wp_create_nonce( $this->plugin_name . '_admin_delete_all' ) ) ); ?>" >delete all</a></span>
+					<?php
+					endif;
+					?>
 				</span>
 			<?php
 		}
