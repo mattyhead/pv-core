@@ -42,6 +42,7 @@ if ( ! class_exists( 'Pv_Core_Helper_Paginator' ) ) {
 		 *
 		 * @param  mixed $plugin_name  Plugin name.
 		 * @param  mixed $pagination   The pagination.
+		 * @param  mixed $exportable  Plugin name.
 		 */
 		public function setup( $plugin_name, $pagination, $exportable = false ) {
 
