@@ -81,7 +81,7 @@ if ( ! class_exists( 'Pv_Core_Helper_Paginator' ) ) {
 
 			?>
 				<span class="alignleft row-actions visible">
-					<span>Page <?php echo esc_html( $this->pagination->current ); ?> of <?php echo esc_html( $this->pagination->last ); ?>.</span>
+					<span>page <?php echo esc_html( $this->pagination->current ); ?> of <?php echo esc_html( $this->pagination->last ); ?> |</span>
 					<span><?php echo $first ; ?></span>
 					<span>|</span>
 					<span><?php echo $previous ; ?></span>
