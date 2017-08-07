@@ -84,9 +84,9 @@ if ( ! class_exists( 'Pv_Core_Helper_Paginator' ) ) {
 					Page <?php echo esc_html( $this->pagination->current ); ?> of <?php echo esc_html( $this->pagination->last ); ?>.
 				</span>
 				<span class="alignright row-actions visible">
-					<span><a target="_blank" href="<?php echo esc_attr( WP_PLUGIN_URL . '/' . $this->plugin_name . '/admin/export.php?' . '&current=' . $this->pagination->current . '_wpnonce=' . wp_create_nonce( $this->plugin_name . '_admin_export' ) ); ?>" >export all</a></span>
+					<span><a target="_blank" href="<?php echo esc_attr( WP_PLUGIN_URL . '/' . $this->plugin_name . '/admin/export.php?' . '&current=' . $this->pagination->current . '&_wpnonce=' . wp_create_nonce( $this->plugin_name . '_admin_export' ) ); ?>" >export all</a></span>
 					<span>|</span>
-					<span class="trash"><a href="<?php echo esc_attr( admin_url( 'admin-post.php?action=' . $this->plugin_name . '_admin_delete_all' . '&current=' . $this->pagination->current . '&_wpnonce=' . wp_create_nonce( $this->plugin_name . '_admin_delete_all' ) ) ); ?>" >delete all</a></span>
+					<span class="trash"><a href="<?php echo esc_attr( admin_url( 'admin-post.php?action=pvmi_admin_delete_all' . '&current=' . $this->pagination->current . '&_wpnonce=' . wp_create_nonce( $this->plugin_name . '_admin_delete_all' ) ) ); ?>" >delete all</a></span>
 				</span>
 			<?php
 		}
