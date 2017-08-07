@@ -17,6 +17,15 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 	class Pv_Core_Model {
 
 		/**
+		 * The plugin config
+		 *
+		 * @since    1.0.0
+		 * @access   public
+		 * @var      mixed     The config object.
+		 */
+		protected $config;
+
+		/**
 		 * The ID of this plugin.
 		 *
 		 * @since    1.0.0
@@ -55,9 +64,10 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 		/**
 		 * Setup!
 		 */
-		public function __construct() {
+		public function __construct( $config ) {
 			global $wpdb;
 
+			$this->config = $config;
 			$this->dbase = &$wpdb;
 		}
 
@@ -139,7 +149,7 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 		public function set_pagination() {
 			// pagination setup.
 			$current = isset( $_REQUEST['current'] ) ? (int) $_REQUEST['current'] : 1 ;
-			$limit = 10;
+			$limit = $this->config->page_limit;
 
 			$total = $this->get_total();
 			$last = ceil( $total / $limit );

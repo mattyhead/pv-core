@@ -25,11 +25,11 @@ if ( ! class_exists( 'Pv_Core_Address_Lookup' ) ) {
 		public $data;
 
 		/**
-		 * Local copy of the data.
+		 * Config of active plugin.
 		 *
-		 * @var string $key
+		 * @var mixed $config
 		 **/
-		public $key = 'f2e3e82987f8a1ef78ca9d9d3cfc7f1d';
+		public $config;
 
 		/**
 		 * Which feature.
@@ -51,6 +51,15 @@ if ( ! class_exists( 'Pv_Core_Address_Lookup' ) ) {
 		 * @var string $service_url
 		 */
 		public $service_url = 'https://api.phila.gov/ais/v1/search/%s?gatekeeperKey=%s';
+
+		/**
+		 * Constructor.
+		 *
+		 * @param      mixed $config  
+		 */
+		public function __construct( $config ) {
+			$this->config = &$config;
+		}
 
 		/**
 		 * Setup.
@@ -126,7 +135,7 @@ if ( ! class_exists( 'Pv_Core_Address_Lookup' ) ) {
 				sprintf(
 					$this->service_url,
 					rawurlencode( $this->data['address1'] ),
-					$this->key
+					$this->config->api_key
 				)
 			);
 
@@ -141,13 +150,6 @@ if ( ! class_exists( 'Pv_Core_Address_Lookup' ) ) {
 
 		}
 
-		/**
-		 * Sets the key.
-		 *
-		 * @param      string $value  The key.
-		 */
-		public function set_key( $value ) {
-			$this->key = $value;
-		}
 	}
+
 }
