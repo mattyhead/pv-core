@@ -81,7 +81,7 @@ if ( ! class_exists( 'Pv_Core_Helper_Paginator' ) ) {
 					<span><?php echo $last ; ?></span>
 				</span>
 				<span class="aligncenter">
-					Page <?php echo esc_html( $this->current ); ?> of <?php echo esc_html( $this->last ); ?>.
+					Page <?php echo esc_html( $this->pagination->current ); ?> of <?php echo esc_html( $this->pagination->last ); ?>.
 				</span>
 				<span class="alignright row-actions visible">
 					<span><a target="_blank" href="<?php echo esc_attr( WP_PLUGIN_URL . '/' . $this->plugin_name . '/admin/export.php?' . '&current=' . $this->pagination->current . '_wpnonce=' . wp_create_nonce( $this->plugin_name . '_admin_export' ) ); ?>" >export all</a></span>
