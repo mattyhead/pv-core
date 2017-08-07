@@ -63,6 +63,8 @@ if ( ! class_exists( 'Pv_Core_Model' ) ) {
 
 		/**
 		 * Setup!
+		 *
+		 * @param   mixed $config (the config object).
 		 */
 		public function __construct( $config ) {
 			global $wpdb;
